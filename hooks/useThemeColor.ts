@@ -4,11 +4,11 @@
  */
 
 import { useColorScheme } from 'react-native';
-import { DS } from '@/components';
+import { Colors } from '@/constants';
 
 export function useThemeColor(
-  colorName: keyof typeof DS.Colors.light & keyof typeof DS.Colors.dark
+  colorName: keyof typeof Colors.light & keyof typeof Colors.dark
 ) {
   const theme = useColorScheme() ?? 'light';
-  return DS.Colors[theme][colorName];
+  return Colors[theme][colorName];
 }
