@@ -54,5 +54,3 @@ export class HttpClient {
 }
 
 export const httpClient = new HttpClient(process.env.EXPO_PUBLIC_BASE_URL ?? '');
-console.log('SEBA CLIENT 0', process.env.EXPO_PUBLIC_BASE_URL);
-console.log('SEBA CLIENT 1', httpClient);
