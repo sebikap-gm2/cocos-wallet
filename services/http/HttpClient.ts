@@ -2,11 +2,11 @@ interface RequestOptions extends RequestInit {
   params?: Record<string, any>;
 }
 
-class HttpClient {
-  private baseUrl: string;
+export class HttpClient {
+  private _baseUrl: string;
 
   constructor(baseUrl: string) {
-    this.baseUrl = baseUrl;
+    this._baseUrl = baseUrl;
   }
 
   private buildQueryString(params?: Record<string, any>): string {
@@ -16,7 +16,7 @@ class HttpClient {
 
   async get<T>(url: string, params?: Record<string, any>): Promise<T> {
     const queryString = this.buildQueryString(params);
-    const response = await fetch(this.baseUrl + url + queryString, {
+    const response = await fetch(this._baseUrl + url + queryString, {
       method: 'GET',
     });
 
@@ -24,7 +24,7 @@ class HttpClient {
   }
 
   async post<T>(url: string, body: any, options?: RequestOptions): Promise<T> {
-    const response = await fetch(this.baseUrl + url, {
+    const response = await fetch(this._baseUrl + url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -54,3 +54,5 @@ class HttpClient {
 }
 
 export const httpClient = new HttpClient(process.env.EXPO_PUBLIC_BASE_URL ?? '');
+console.log('SEBA CLIENT 0', process.env.EXPO_PUBLIC_BASE_URL);
+console.log('SEBA CLIENT 1', httpClient);
