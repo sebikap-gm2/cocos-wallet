@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, Platform, View } from 'react-native';
+import { Image, StyleSheet, Text, Platform, View, SafeAreaView } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -6,6 +6,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useQuery } from '@tanstack/react-query';
 import { portfolioService } from '@/services';
+import { PortfolioItem } from '@/components/PortfolioItem';
 
 export default function HomeScreen() {
   const query = useQuery({ queryKey: ['todos'], queryFn: portfolioService.getPortfolio });
@@ -19,18 +20,10 @@ export default function HomeScreen() {
   }
 
   return (
-    <View>
-      {query.data.map(portfolioItem => (
-        <View>
-          <Text>{portfolioItem.instrument_id}</Text>
-          <Text>{portfolioItem.ticker}</Text>
-          <Text>{portfolioItem.quantity}</Text>
-          <Text>{portfolioItem.avg_cost_price}</Text>
-          <Text>{portfolioItem.close_price}</Text>
-          <Text>{portfolioItem.last_price}</Text>
-        </View>
-      ))}
-    </View>
+    <SafeAreaView style={{ flex: 1 }}>
+      {/* TODO: Why am I getting duplicated instruments ids? */}
+      {query.data.map((item, index) => <PortfolioItem key={`${item.instrument_id}-${index}`} item={item} />)}
+    </SafeAreaView>
   )
 }
 
