@@ -14,28 +14,10 @@ interface InstrumentItemProps {
 export const InstrumentItem = ({ item }: InstrumentItemProps) => {
   const returnPrice = item.last_price - item.close_price;
 
-  const handleClick = () => {
-    // Show modal
-    // Form to send order
-    // Order action BUY/SELL
-    // Order type MARKET/LIMIT
-    // quantity
-    // IF Order type === LIMIT
-    //      Price
-
-    // Reponse: id, status PENDING/REJECTED/FILLED. Show id && status. 
-
-    // <Link href="/modal" style={styles.link}>
-    //     Open modal
-    // </Link>
-
-  };
-
+  const handleInstrumentClick = () => router.navigate({ pathname: '/instruments/modal', params: { instrumentId: item.id, ticker: item.ticker } });
+  
   return (
-    <DS.View style={styles.container} onPress={() => {
-      console.log('HERE')
-      router.navigate({ pathname: '/modal', params: { title: item.ticker } })
-    }}>
+    <DS.Button style={styles.container} onPress={handleInstrumentClick}>
       {/* <DS.Text>{item.id}</DS.Text> */}
       <DS.Text>{item.ticker}</DS.Text>
       <DS.Text>{item.name}</DS.Text>
@@ -43,7 +25,7 @@ export const InstrumentItem = ({ item }: InstrumentItemProps) => {
       {/* <DS.Text>{item.last_price}</DS.Text> */}
       {/* <DS.Text>{item.type}</DS.Text> */}
       {/* <DS.Text>{item.close_price}</DS.Text> */}
-    </DS.View>
+    </DS.Button>
   );
 }
 
