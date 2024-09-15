@@ -7,3 +7,10 @@ export const DS = {
   Text: ThemedText,
   View: ThemedView,
 } as const
+
+// typography: Typography,
+// palette: Palette,
+// spacing: Spacing,
+// Frame,
+// Icon,
+// Button
