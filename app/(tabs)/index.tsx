@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, Platform, View, SafeAreaView } from 'react-native';
+import { Image, StyleSheet, Text, Platform, View, SafeAreaView, FlatList } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -9,7 +9,7 @@ import { portfolioService } from '@/services';
 import { PortfolioItem } from '@/features';
 
 export default function HomeScreen() {
-  const query = useQuery({ queryKey: ['todos'], queryFn: portfolioService.getPortfolio });
+  const query = useQuery({ queryKey: ['portfolio'], queryFn: portfolioService.getPortfolio });
 
   if (query.isLoading) {
     return <Text>Loading...</Text>;
@@ -22,7 +22,10 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* TODO: Why am I getting duplicated instruments ids? */}
-      {query.data.map((item, index) => <PortfolioItem key={`${item.instrument_id}-${index}`} item={item} />)}
+      <FlatList
+        data={query.data}
+        renderItem={({ item }) => <PortfolioItem item={item} />}
+      />
     </SafeAreaView>
   )
 }
