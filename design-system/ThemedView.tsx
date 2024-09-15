@@ -3,19 +3,20 @@ import { GestureResponderEvent, StyleSheet, TouchableOpacity, View, type ViewPro
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 export type ThemedViewProps = ViewProps & {
-  onPress?: ((event: GestureResponderEvent) => void) | undefined;
+  full?: boolean
 };
 
-export function ThemedView({ style, onPress = undefined, ...otherProps }: ThemedViewProps) {
-  const backgroundColor = useThemeColor('background');
+export function ThemedView({ style, full = false, ...otherProps }: ThemedViewProps) {
+  const backgroundColor = useThemeColor('background.primary');
 
-  const Component = onPress ? TouchableOpacity : View;
-
-  return <Component onPress={onPress} style={[{ backgroundColor }, style]} {...otherProps} />;
+  return <View style={[styles.container, { backgroundColor }, full && styles.full, style]} {...otherProps} />;
 }
 
 const styles = StyleSheet.create({
+  container: {
+
+  },
   full: {
-    flex: 1,
+    width: '100%',
   }
 })
