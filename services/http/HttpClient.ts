@@ -1,3 +1,5 @@
+import env from "@/env";
+
 interface RequestOptions extends RequestInit {
   params?: Record<string, any>;
 }
@@ -53,4 +55,4 @@ export class HttpClient {
   }
 }
 
-export const httpClient = new HttpClient(process.env.EXPO_PUBLIC_BASE_URL ?? '');
+export const httpClient = new HttpClient(env.EXPO_PUBLIC_BASE_URL);
