@@ -1,26 +1,77 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
+import { NestedKeys, NestedRoute } from "@/utils";
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+export type HexColor = `#${string}`;
 
-export const Colors = {
+interface Palette {
+  primary: HexColor
+  secondary: HexColor
+  accent: HexColor
+  success: HexColor
+  error: HexColor
+  warning: HexColor
+}
+export type PaletteColor = keyof Palette & string;
+
+interface ThemeColors {
+  text: {
+    primary: HexColor
+    secondary: HexColor
+    contrast: HexColor
+  }
+  background: {
+    primary: HexColor
+    secondary: HexColor
+  }
+  palette: Palette
+}
+
+export type ThemeColor = keyof ThemeColors & string;
+
+export interface IColors {
+  light: ThemeColors
+  dark: ThemeColors
+}
+
+export type ColorsRoute = NestedRoute<IColors>;
+export type ColorsKeys = NestedKeys<IColors>;
+
+export const Colors: IColors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    text: {
+      primary: '#333333',
+      secondary: '#6B7280',
+      contrast: '#FFFFFF'
+    },
+    background: {
+      primary: '#FFFFFF',
+      secondary: '#F9FAFB'
+    },
+    palette: {
+      primary: '#3B82F6',
+      secondary: '#2563EB',
+      accent: '#2563EB',
+      success: '#10B981',
+      error: '#EF4444',
+      warning: '#F59E0B'
+    }
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+    text: {
+      primary: '#F9FAFB',
+      secondary: '#D1D5DB',
+      contrast: '#0F172A',
+    },
+    background: {
+      primary: '#0F172A',
+      secondary: '#1F2937'
+    },
+    palette: {
+      primary: '#1D4ED8',
+      secondary: '#3B82F6',
+      accent: '#2563EB',
+      success: '#10B981',
+      error: '#EF4444',
+      warning: '#F59E0B'
+    }
   },
 };
