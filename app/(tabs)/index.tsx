@@ -2,8 +2,6 @@ import { Image, StyleSheet, Text, Platform, View, SafeAreaView, FlatList } from 
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
 import { useQuery } from '@tanstack/react-query';
 import { portfolioService } from '@/services';
 import { PortfolioItem } from '@/features';
