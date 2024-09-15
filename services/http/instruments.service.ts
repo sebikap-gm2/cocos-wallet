@@ -3,8 +3,8 @@ import { httpClient } from "./HttpClient"
 
 class InstrumentsService {
 
-  getInstruments() {
-    return httpClient.get<InstrumentItem[]>('/instruments');
+  async getInstruments() {
+    return await httpClient.get<InstrumentItem[]>('/instruments');
   }
 
 }

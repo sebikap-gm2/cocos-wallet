@@ -3,8 +3,8 @@ import { HttpClient, httpClient } from "./HttpClient"
 
 class PortfolioService {
 
-  getPortfolio() {
-    return httpClient.get<PortfolioItem[]>('/portfolio');
+  async getPortfolio() {
+    return await httpClient.get<PortfolioItem[]>('/portfolio');
   }
 }
 
