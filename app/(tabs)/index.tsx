@@ -6,7 +6,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useQuery } from '@tanstack/react-query';
 import { portfolioService } from '@/services';
-import { PortfolioItem } from '@/components/PortfolioItem';
+import { PortfolioItem } from '@/features';
 
 export default function HomeScreen() {
   const query = useQuery({ queryKey: ['todos'], queryFn: portfolioService.getPortfolio });
