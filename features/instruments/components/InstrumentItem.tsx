@@ -14,7 +14,7 @@ interface InstrumentItemProps {
 export const InstrumentItem = ({ item }: InstrumentItemProps) => {
   const returnPrice = item.last_price - item.close_price;
 
-  const handleInstrumentClick = () => router.navigate({ pathname: '/instruments/modal', params: { instrumentId: item.id, ticker: item.ticker } });
+  const handleInstrumentClick = () => router.navigate({ pathname: '/orders/modal', params: { instrumentId: item.id, ticker: item.ticker } });
   
   return (
     <DS.Button style={styles.container} onPress={handleInstrumentClick}>
