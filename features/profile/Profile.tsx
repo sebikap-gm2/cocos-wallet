@@ -36,7 +36,9 @@ export const Profile = ({ navigation }: ProfileProps) => {
       <DS.View flex={2}>
         <Portfolio />
       </DS.View>
-      <ProfileMenu />
+      <DS.View flex={1} style={styles.menu}>
+        <ProfileMenu />
+      </DS.View>
       {/* <DrawerItemList {...props} /> */}
       {/* </DrawerContentScrollView> */}
       <DS.Text>App Version: {Application.nativeBuildVersion}</DS.Text>
@@ -52,4 +54,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between'
   },
+  menu: {
+    justifyContent: 'flex-start'
+  }
 });
