@@ -1,1 +1,1 @@
-export const INSTRUMENTS_COLUMNS = 2;
+// export const INSTRUMENTS_COLUMNS = 2;
