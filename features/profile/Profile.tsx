@@ -9,11 +9,11 @@ import * as Application from 'expo-application';
 import { Ionicons } from '@expo/vector-icons';
 import { useThemeColor } from '@/hooks/useThemeColor';
 import { ProfileMenu } from './ProfileMenu';
+import { Portfolio } from './Portfolio';
 
 interface ProfileProps extends DrawerContentComponentProps { }
 
 export const Profile = ({ navigation }: ProfileProps) => {
-  const query = useQuery({ queryKey: ['portfolio'], queryFn: portfolioService.getPortfolio });
   const color = useThemeColor('colors.text');
 
   return (
@@ -34,18 +34,7 @@ export const Profile = ({ navigation }: ProfileProps) => {
         </DS.Button>
       </DS.View>
       <DS.View flex={2}>
-        <DS.View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}>
-          <DS.View flex={1}><DS.Text bold center>Ticker</DS.Text></DS.View>
-          <DS.View flex={1}><DS.Text bold center>Quantity</DS.Text></DS.View>
-          <DS.View flex={1}><DS.Text bold center>Avg</DS.Text></DS.View>
-          <DS.View flex={1}><DS.Text bold center>Close</DS.Text></DS.View>
-          <DS.View flex={1}><DS.Text bold center>Last</DS.Text></DS.View>
-        </DS.View>
-        <FlatList
-          data={query.data}
-          renderItem={({ item, index }) => <PortfolioItem item={item} bg={index % 2 === 0} />}
-          style={{ flex: 1 }}
-        />
+        <Portfolio />
       </DS.View>
       <ProfileMenu />
       {/* <DrawerItemList {...props} /> */}
