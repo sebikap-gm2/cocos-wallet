@@ -2,22 +2,28 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { useThemeColor } from '@/hooks/useThemeColor';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const tabBarActiveTintColor = useThemeColor('colors.text');
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor,
         headerShown: false,
-      }}>
+        tabBarStyle: {
+          backgroundColor: 'transparent',
+          borderTopWidth: 0, // Remove top border
+          elevation: 0,       // Remove shadow on Android
+          shadowOpacity: 0,   // Remove shadow on iOS
+        },
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="(drawer)"
         options={{
-          title: 'Portfolio',
+          tabBarLabel: () => null,
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'wallet' : 'wallet-outline'} color={color} />
           ),
@@ -26,7 +32,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="instruments"
         options={{
-          title: 'Instruments',
+          tabBarLabel: () => null,
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'cash' : 'cash-outline'} color={color} />
           ),
@@ -35,7 +41,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="search"
         options={{
-          title: 'Search',
+          tabBarLabel: () => null,
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'search' : 'search-outline'} color={color} />
           ),

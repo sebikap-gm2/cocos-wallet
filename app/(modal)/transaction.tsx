@@ -13,7 +13,7 @@ const modalParamsValidator = z.object({
   })
 });
 
-export default function Modal() {
+export default function TransactionModal() {
   const route = useRoute();
   const { params } = modalParamsValidator.parse(route);
   const { control, handleSubmit, watch, formState: { errors } } = useForm<Order>({
