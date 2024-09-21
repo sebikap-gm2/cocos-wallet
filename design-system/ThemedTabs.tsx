@@ -18,8 +18,8 @@ interface ThemedTabsProps {
 
 export const ThemedTabs = ({ options, selectedValue, setSelectedValue }: ThemedTabsProps) => {
   const animation = new Animated.Value(0);
-  const color = useThemeColor('text.primary')
-  const backgroundColor = useThemeColor('background.primary')
+  const color = useThemeColor('colors.text')
+  const backgroundColor = useThemeColor('colors.background')
 
   React.useEffect(() => {
     Animated.timing(animation, {

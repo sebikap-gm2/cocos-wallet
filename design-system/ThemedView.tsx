@@ -4,12 +4,12 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 
 export type ThemedViewProps = ViewProps & {
   full?: boolean
+  flex?: number
+  center?: boolean
 };
 
-export function ThemedView({ style, full = false, ...otherProps }: ThemedViewProps) {
-  const backgroundColor = useThemeColor('background.primary');
-
-  return <View style={[styles.container, { backgroundColor }, full && styles.full, style]} {...otherProps} />;
+export function ThemedView({ style, flex, center, full = false, ...otherProps }: ThemedViewProps) {
+  return <View style={[styles.container, full && styles.full, flex && { flex, justifyContent: 'center', alignItems: center ? 'center' : undefined }, style]} {...otherProps} />;
 }
 
 const styles = StyleSheet.create({
@@ -18,5 +18,8 @@ const styles = StyleSheet.create({
   },
   full: {
     width: '100%',
+  },
+  flex: {
+    flex: 1
   }
 })

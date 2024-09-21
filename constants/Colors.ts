@@ -1,4 +1,5 @@
 import { NestedKeys, NestedRoute } from "@/utils";
+import { Theme  } from "@react-navigation/native";
 
 export type HexColor = `#${string}`;
 
@@ -12,24 +13,11 @@ interface Palette {
 }
 export type PaletteColor = keyof Palette & string;
 
-interface ThemeColors {
-  text: {
-    primary: HexColor
-    secondary: HexColor
-    contrast: HexColor
-  }
-  background: {
-    primary: HexColor
-    secondary: HexColor
-  }
-  palette: Palette
-}
-
-export type ThemeColor = keyof ThemeColors & string;
+export type ThemeColor = keyof Theme & string;
 
 export interface IColors {
-  light: ThemeColors
-  dark: ThemeColors
+  light: Theme
+  dark: Theme
 }
 
 export type ColorsRoute = NestedRoute<IColors>;
@@ -37,41 +25,25 @@ export type ColorsKeys = NestedKeys<IColors>;
 
 export const Colors: IColors = {
   light: {
-    text: {
-      primary: '#333333',
-      secondary: '#6B7280',
-      contrast: '#FFFFFF'
+    dark: false,
+    colors: {
+      primary: '#007bff',       // Bright blue
+      background: '#ffffff',     // White
+      card: '#f8f9fa',          // Light gray
+      text: '#212529',           // Dark gray
+      border: '#dee2e6',         // Light border gray
+      notification: '#ffc107',   // Yellow
     },
-    background: {
-      primary: '#FFFFFF',
-      secondary: '#F9FAFB'
-    },
-    palette: {
-      primary: '#3B82F6',
-      secondary: '#2563EB',
-      accent: '#2563EB',
-      success: '#10B981',
-      error: '#EF4444',
-      warning: '#F59E0B'
-    }
   },
   dark: {
-    text: {
-      primary: '#F9FAFB',
-      secondary: '#D1D5DB',
-      contrast: '#0F172A',
-    },
-    background: {
-      primary: '#0F172A',
-      secondary: '#1F2937'
-    },
-    palette: {
-      primary: '#1D4ED8',
-      secondary: '#3B82F6',
-      accent: '#2563EB',
-      success: '#10B981',
-      error: '#EF4444',
-      warning: '#F59E0B'
+    dark: true,
+    colors: {
+      primary: '#ffffff',       // White
+      background: '#121212',     // Very dark gray
+      card: '#1f1f1f',          // Dark gray
+      text: '#ffffff',           // White
+      border: '#333333',         // Darker gray
+      notification: '#ff4757',   // Bright red
     }
   },
 };

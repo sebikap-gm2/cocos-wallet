@@ -1,21 +1,29 @@
+import { useThemeColor } from '@/hooks/useThemeColor';
 import { Text, type TextProps, StyleSheet } from 'react-native';
 
-import { useThemeColor } from '@/hooks/useThemeColor';
-
 export type ThemedTextProps = TextProps & {
+  bold?: boolean,
+  center?: boolean,
+  flex?: number,
   type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'error';
 };
 
 export function ThemedText({
+  bold = false,
+  center = false,
+  flex = undefined,
   type = 'default',
   ...rest
 }: ThemedTextProps) {
-  const color = useThemeColor('text.primary');
+  // TODO: Overriding color as it is not being applied directly by the theme.
+  const color = useThemeColor('colors.text');
 
   return (
     <Text
       style={[
         { color },
+        bold && { fontWeight: 'bold' },
+        center && { textAlign: 'center' },
         type === 'default' ? styles.default : undefined,
         type === 'title' ? styles.title : undefined,
         type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
@@ -50,11 +58,9 @@ const styles = StyleSheet.create({
   link: {
     lineHeight: 30,
     fontSize: 16,
-    color: '#0a7ea4',
   },
   error: {
     lineHeight: 30,
     fontSize: 16,
-    color: '#ff0000',
   },
 });
