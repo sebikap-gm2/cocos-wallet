@@ -31,6 +31,12 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b01e93cf-92c5-4569-b22c-8a47683aa2b5"
+      }
+    },
+    "owner": "sebikap"
   }
 }
