@@ -1,19 +1,38 @@
+import { StyleSheet } from "react-native";
 import { DS } from "@/design-system";
 import { PortfolioItem as TPortfolioItem } from "@/types"
+import { useThemeColor } from "@/hooks/useThemeColor";
+import { formatCurrency } from "@/utils";
 
 interface PortfolioItemProps {
   item: TPortfolioItem
+  bg?: boolean
 }
 
-export const PortfolioItem = ({ item }: PortfolioItemProps) => {
+export const PortfolioItem = ({ item, bg }: PortfolioItemProps) => {
+  const backgroundColor = useThemeColor('colors.card');
+
   return (
-    <DS.View>
-      {/* <DS.Text>{item.instrument_id}</DS.Text> */}
-      <DS.Text>{item.ticker}</DS.Text>
-      <DS.Text>{item.quantity}</DS.Text>
-      <DS.Text>{item.avg_cost_price}</DS.Text>
-      <DS.Text>{item.close_price}</DS.Text>
-      <DS.Text>{item.last_price}</DS.Text>
-    </DS.View>
+
+    <DS.Button style={[styles.container, bg && { backgroundColor }]} onPress={() => null}>
+      <DS.View flex={1}><DS.Text center>{item.ticker}</DS.Text></DS.View>
+      <DS.View flex={1}><DS.Text center>{item.quantity}</DS.Text></DS.View>
+      <DS.View flex={1}><DS.Text center>{formatCurrency({ value: item.avg_cost_price })}</DS.Text></DS.View>
+      <DS.View flex={1}><DS.Text center>{formatCurrency({ value: item.close_price })}</DS.Text></DS.View>
+      <DS.View flex={1}><DS.Text center>{formatCurrency({ value: item.last_price })}</DS.Text></DS.View>
+    </DS.Button>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    margin: 5,
+    padding: 10,
+    borderRadius: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: 15,
+    flexWrap: 'wrap'
+  }
+})
