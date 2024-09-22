@@ -1,13 +1,13 @@
-import { Dropdown } from 'react-native-element-dropdown';
-import { DropdownProps } from 'react-native-element-dropdown/lib/typescript/components/Dropdown/model';
-import { useThemeColor } from './hooks';
+import { Dropdown } from "react-native-element-dropdown";
+import { DropdownProps } from "react-native-element-dropdown/lib/typescript/components/Dropdown/model";
+import { useThemeColor } from "./hooks";
 
 interface ThemedDropdownProps<T> extends DropdownProps<T> { }
 
 export const ThemedDropdown = <T,>(props: ThemedDropdownProps<T>) => {
-  const color = useThemeColor('colors.text');
-  const backgroundColor = useThemeColor('colors.card');
-  const selectedBackgroundColor = useThemeColor('colors.background');
+  const color = useThemeColor("colors.text");
+  const backgroundColor = useThemeColor("colors.card");
+  const selectedBackgroundColor = useThemeColor("colors.background");
 
   return (
     <Dropdown
@@ -19,8 +19,8 @@ export const ThemedDropdown = <T,>(props: ThemedDropdownProps<T>) => {
       itemContainerStyle={{ backgroundColor }}
       itemTextStyle={{ color }}
       selectedTextStyle={{ color, backgroundColor, padding: 10 }}
-      selectedTextProps={{ ellipsizeMode: 'tail' }}
+      selectedTextProps={{ ellipsizeMode: "tail" }}
       {...props}
     />
-  )
-}
+  );
+};

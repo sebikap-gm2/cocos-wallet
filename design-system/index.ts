@@ -18,9 +18,9 @@ export const DS = {
   Text: ThemedText,
   TextInput: ThemedTextInput,
   View: ThemedView,
-} as const
+} as const;
 
-export * from './hooks'
+export * from "./hooks";
 
 // typography: Typography,
 // palette: Palette,

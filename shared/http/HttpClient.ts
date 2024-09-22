@@ -1,5 +1,5 @@
 import env from "@/env";
-import * as Sentry from '@sentry/react-native';
+import * as Sentry from "@sentry/react-native";
 
 interface RequestOptions extends RequestInit {
   params?: Record<string, any>;
@@ -13,14 +13,14 @@ export class HttpClient {
   }
 
   private buildQueryString(params?: Record<string, any>): string {
-    if (!params) return '';
-    return '?' + new URLSearchParams(params).toString();
+    if (!params) return "";
+    return "?" + new URLSearchParams(params).toString();
   }
 
   async get<T>(url: string, params?: Record<string, any>): Promise<T> {
     const queryString = this.buildQueryString(params);
     const response = await fetch(this._baseUrl + url + queryString, {
-      method: 'GET',
+      method: "GET",
     });
 
     return this.handleResponse<T>(response);
@@ -28,9 +28,9 @@ export class HttpClient {
 
   async post<T>(url: string, body: any, options?: RequestOptions): Promise<T> {
     const response = await fetch(this._baseUrl + url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         ...(options?.headers || {}),
       },
       body: JSON.stringify(body),
@@ -42,13 +42,17 @@ export class HttpClient {
 
   async put<T>(url: string, body: any, options?: RequestOptions): Promise<T> {
     // TODO: Implement
-    return new Promise((resolve, reject) => resolve({ error: 'put is not implemented' } as T));
+    return new Promise((resolve, reject) =>
+      resolve({ error: "put is not implemented" } as T),
+    );
   }
 
   private async handleResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
       const error = await response.json();
-      const errorInstance = new Error(`HTTP error! Status: ${response.status}, Message: ${error.message || 'Unknown error'}`);
+      const errorInstance = new Error(
+        `HTTP error! Status: ${response.status}, Message: ${error.message || "Unknown error"}`,
+      );
       Sentry.captureException(errorInstance);
       throw errorInstance;
     }

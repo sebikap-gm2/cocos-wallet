@@ -11,7 +11,7 @@ import { z } from "zod";
 const InstrumentDetailsParamsValidator = z.object({
   params: z.object({
     instrumentId: z.coerce.number().int(),
-  })
+  }),
 });
 
 export default function InstrumentDetails() {
@@ -21,18 +21,30 @@ export default function InstrumentDetails() {
 
   if (!instrument) return null;
 
-  const icon = instrument.type === InstrumentType.ACCIONES ? 'stats-chart-outline' : 'cash-outline';
+  const icon =
+    instrument.type === InstrumentType.ACCIONES
+      ? "stats-chart-outline"
+      : "cash-outline";
 
   return (
     <DS.View flex={1} full gap={20} style={{ padding: 20 }}>
       <DS.View center gap={10}>
-        <Ionicons name={icon} size={32} color='white' />
+        <Ionicons name={icon} size={32} color="white" />
         <DS.Text type="title">{instrument.ticker}</DS.Text>
       </DS.View>
       <InstrumentDetailsRow title="Name" value={instrument.name} />
-      <InstrumentDetailsRow title="Last Price" value={formatCurrency({ value: instrument.last_price, shorten: true })} />
-      <InstrumentDetailsRow title="Close Price" value={formatCurrency({ value: instrument.close_price, shorten: true })} />
-      <InstrumentDetailsRow title="Return %" value={`${instrument.returnPercentage}%`} />
+      <InstrumentDetailsRow
+        title="Last Price"
+        value={formatCurrency({ value: instrument.last_price, shorten: true })}
+      />
+      <InstrumentDetailsRow
+        title="Close Price"
+        value={formatCurrency({ value: instrument.close_price, shorten: true })}
+      />
+      <InstrumentDetailsRow
+        title="Return %"
+        value={`${instrument.returnPercentage}%`}
+      />
     </DS.View>
   );
 }

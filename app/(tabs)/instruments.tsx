@@ -10,19 +10,22 @@ export default function Instruments() {
   }
 
   if (!instruments) {
-    return <DS.View><DS.Text>Error fetching instruments</DS.Text></DS.View>
+    return (
+      <DS.View>
+        <DS.Text>Error fetching instruments</DS.Text>
+      </DS.View>
+    );
   }
 
   return (
     <DS.PageLayout style={styles.container}>
-      <DS.Text type='title'>Instruments</DS.Text>
+      <DS.Text type="title">Instruments</DS.Text>
       <FlatList
         data={instruments}
         renderItem={({ item }) => <InstrumentItem item={item} />}
         contentContainerStyle={styles.listContainer}
         numColumns={2}
       />
-
     </DS.PageLayout>
   );
 }
@@ -36,4 +39,4 @@ const styles = StyleSheet.create({
   listContainer: {
     paddingVertical: 10,
   },
-})
+});

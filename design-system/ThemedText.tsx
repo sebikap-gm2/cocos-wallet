@@ -1,37 +1,43 @@
-import { Text, type TextProps, StyleSheet } from 'react-native';
-import { useThemeColor } from './hooks';
+import { Text, type TextProps, StyleSheet } from "react-native";
+import { useThemeColor } from "./hooks";
 
 export type ThemedTextProps = TextProps & {
-  bold?: boolean,
-  center?: boolean,
-  flex?: number,
-  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'error';
+  bold?: boolean;
+  center?: boolean;
+  flex?: number;
+  type?:
+  | "default"
+  | "title"
+  | "defaultSemiBold"
+  | "subtitle"
+  | "link"
+  | "error";
 };
 
 export function ThemedText({
   bold = false,
   center = false,
   flex = undefined,
-  type = 'default',
+  type = "default",
   style,
   ...rest
 }: ThemedTextProps) {
   // TODO: Overriding color as it is not being applied directly by the theme.
-  const color = useThemeColor('colors.text');
+  const color = useThemeColor("colors.text");
 
   return (
     <Text
       style={[
         { color },
-        bold && { fontWeight: 'bold' },
-        center && { textAlign: 'center' },
-        type === 'default' ? styles.default : undefined,
-        type === 'title' ? styles.title : undefined,
-        type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
-        type === 'subtitle' ? styles.subtitle : undefined,
-        type === 'link' ? styles.link : undefined,
-        type === 'error' ? styles.link : undefined,
-        style
+        bold && { fontWeight: "bold" },
+        center && { textAlign: "center" },
+        type === "default" ? styles.default : undefined,
+        type === "title" ? styles.title : undefined,
+        type === "defaultSemiBold" ? styles.defaultSemiBold : undefined,
+        type === "subtitle" ? styles.subtitle : undefined,
+        type === "link" ? styles.link : undefined,
+        type === "error" ? styles.link : undefined,
+        style,
       ]}
       {...rest}
     />
@@ -46,16 +52,16 @@ const styles = StyleSheet.create({
   defaultSemiBold: {
     fontSize: 16,
     lineHeight: 24,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   title: {
     fontSize: 32,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     lineHeight: 32,
   },
   subtitle: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   link: {
     lineHeight: 30,

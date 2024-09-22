@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { Animated, StyleSheet } from 'react-native';
-import { ThemedButton } from './ThemedButton';
-import { ThemedText } from './ThemedText';
+import { useState, useEffect } from "react";
+import { Animated, StyleSheet } from "react-native";
+import { ThemedButton } from "./ThemedButton";
+import { ThemedText } from "./ThemedText";
 
 interface SwitchProps {
   value: boolean;
@@ -21,7 +21,7 @@ export const ThemedSwitch = ({ value, onChange }: SwitchProps) => {
 
   const interpolatedBackgroundColor = animation.interpolate({
     inputRange: [0, 1],
-    outputRange: ['#ccc', '#4caf50'], // background colors for off and on states
+    outputRange: ["#ccc", "#4caf50"], // background colors for off and on states
   });
 
   const interpolatedPosition = animation.interpolate({
@@ -38,8 +38,8 @@ export const ThemedSwitch = ({ value, onChange }: SwitchProps) => {
         style={[
           styles.switchKnob,
           {
-            backgroundColor: 'white', // knob color
-            transform: [{ translateX: interpolatedPosition }]
+            backgroundColor: "white", // knob color
+            transform: [{ translateX: interpolatedPosition }],
           },
         ]}
       />
@@ -51,7 +51,7 @@ export const ThemedSwitch = ({ value, onChange }: SwitchProps) => {
           },
         ]}
       />
-      <ThemedText style={styles.switchLabel}>{value ? 'ON' : 'OFF'}</ThemedText>
+      <ThemedText style={styles.switchLabel}>{value ? "ON" : "OFF"}</ThemedText>
     </ThemedButton>
   );
 };
@@ -61,16 +61,16 @@ const styles = StyleSheet.create({
     width: 60,
     height: 30,
     borderRadius: 15,
-    justifyContent: 'center',
+    justifyContent: "center",
     padding: 5,
-    position: 'relative',
-    alignItems: 'center',
+    position: "relative",
+    alignItems: "center",
   },
   switchKnob: {
     width: 24,
     height: 24,
     borderRadius: 12,
-    position: 'absolute',
+    position: "absolute",
     top: 3,
     left: 3,
   },
@@ -79,9 +79,9 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   switchLabel: {
-    color: 'white',
-    fontWeight: 'bold',
-    position: 'absolute',
+    color: "white",
+    fontWeight: "bold",
+    position: "absolute",
     top: 4,
     left: 30,
   },

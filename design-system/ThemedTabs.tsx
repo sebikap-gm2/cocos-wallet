@@ -1,22 +1,33 @@
-import { useThemeColor } from './hooks';
-import { useEffect } from 'react';
-import { View, Text, TouchableOpacity, Animated, StyleSheet, Dimensions } from 'react-native';
+import { useThemeColor } from "./hooks";
+import { useEffect } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Animated,
+  StyleSheet,
+  Dimensions,
+} from "react-native";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
 type Tab = {
-  title: string
-}
+  title: string;
+};
 
 interface ThemedTabsProps {
-  options: Tab[]
-  selectedValue: string
-  setSelectedValue: (newValue: string) => void
+  options: Tab[];
+  selectedValue: string;
+  setSelectedValue: (newValue: string) => void;
 }
 
-export const ThemedTabs = ({ options, selectedValue, setSelectedValue }: ThemedTabsProps) => {
-  const color = useThemeColor('colors.text')
-  const backgroundColor = useThemeColor('colors.background')
+export const ThemedTabs = ({
+  options,
+  selectedValue,
+  setSelectedValue,
+}: ThemedTabsProps) => {
+  const color = useThemeColor("colors.text");
+  const backgroundColor = useThemeColor("colors.background");
 
   useEffect(() => {
     const animation = new Animated.Value(0);
@@ -26,7 +37,6 @@ export const ThemedTabs = ({ options, selectedValue, setSelectedValue }: ThemedT
       useNativeDriver: true,
     }).start();
   }, [selectedValue, options]);
-
 
   // const Content = options[activeTabIndex].content;
 
@@ -41,7 +51,9 @@ export const ThemedTabs = ({ options, selectedValue, setSelectedValue }: ThemedT
               style={[styles.tab, selected && { backgroundColor }]}
               onPress={() => setSelectedValue(option.title)}
             >
-              <Text style={[styles.tabText, selected && { color }]}>{option.title}</Text>
+              <Text style={[styles.tabText, selected && { color }]}>
+                {option.title}
+              </Text>
             </TouchableOpacity>
           );
         })}
@@ -56,38 +68,38 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   tabBar: {
-    flexDirection: 'row',
-    backgroundColor: '#ddd',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    backgroundColor: "#ddd",
+    justifyContent: "space-around",
     padding: 10,
-    borderRadius: 20
+    borderRadius: 20,
   },
   tab: {
     padding: 10,
     flex: 1,
-    alignItems: 'center',
-    borderRadius: 10
+    alignItems: "center",
+    borderRadius: 10,
   },
   activeTab: {
-    backgroundColor: '#4caf50',
+    backgroundColor: "#4caf50",
   },
   tabText: {
-    color: '#333',
+    color: "#333",
     fontSize: 16,
   },
   contentContainer: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: "row",
     width: width * 2, // Two tabs with width of the screen
   },
   tabContent: {
     width: width,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
   contentText: {
     fontSize: 18,
-    color: '#333',
+    color: "#333",
   },
 });

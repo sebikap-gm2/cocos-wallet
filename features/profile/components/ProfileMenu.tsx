@@ -7,10 +7,22 @@ function ProfileMenu() {
 
   return (
     <>
-      <DS.Button type='plain' icon='settings' text='Settings' onPress={() => router.navigate('/(modal)/settings')} center={false} />
-      <DS.Button type='plain' icon='help' text='Help' onPress={() => openExternalLink('https://cocos.capital/ayuda')} center={false} />
+      <DS.Button
+        type="plain"
+        icon="settings"
+        text="Settings"
+        onPress={() => router.navigate("/(modal)/settings")}
+        center={false}
+      />
+      <DS.Button
+        type="plain"
+        icon="help"
+        text="Help"
+        onPress={() => openExternalLink("https://cocos.capital/ayuda")}
+        center={false}
+      />
     </>
-  )
+  );
 }
 
 export { ProfileMenu };

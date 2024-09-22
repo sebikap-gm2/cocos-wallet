@@ -5,8 +5,9 @@ export type NestedKeys<T> = {
 }[keyof T];
 
 export type NestedRoute<T> = T extends object
-  ? { [K in keyof T]: K extends string | number
+  ? {
+    [K in keyof T]: K extends string | number
     ? `${K}` | `${K}.${NestedRoute<T[K]>}`
-    : never
+    : never;
   }[keyof T]
   : never;

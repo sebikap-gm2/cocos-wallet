@@ -5,5 +5,5 @@ export default function SettingsModal() {
     <DS.PageLayout>
       <DS.Text>This would be Settings page</DS.Text>
     </DS.PageLayout>
-  )
+  );
 }
