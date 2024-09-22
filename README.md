@@ -36,6 +36,12 @@
     <td>Both approaches have their strong and weaks points. In this case, I chose a feature based approach as I believe the benefits of having everything needed for a feature inside it's own folder, helps to understand better the approach.</td>
   </tr>
   <tr>
+    <td>Git flow</td>
+    <td>Feature based, Trunk based</td>
+    <td>Main branch repository</td>
+    <td>Given that this is a POC app, with a time constraint, where I would be working alone, I decided for a simple main branch repository approach, to avoid the unnecessary work that other Git flow approaches bring. If more time was provided, or more people were involved, this would not be an option.</td>
+  </tr>
+  <tr>
     <td>Styling</td>
     <td>Inline styles, Styled components, Component library </td>
     <td>RN Stylesheet</td>
