@@ -47,4 +47,10 @@
     <td>MOBX</td>
     <td></td>
   </tr>
+  <tr>
+    <td>Select component</td>
+    <td>Manually create, React Native Picker, React Native Modal Dropdown, React Native Dropdown Menu, React Native Dropdown Select, React Native Select Picker, React Native Paper Menu, React Native Bottom Sheet, React Native Select Dropdown & more</td>
+    <td>React Native Element Dropdown</td>
+    <td>Multiple options require analysis, and a dropdown component is an important choice as it is a commonly used component in apps. In this case, given the little time, and need to prioritize other features and decisions, I was going to go with React Native Picker as it is the recommended one on the <a href="https://docs.expo.dev/versions/latest/sdk/picker/">Expo Documentation</a>. However, it was not easy to use, and therefore migrated to React Native Element Dropdown, that also provides autocomplete. Further investigation would be ideal to decide if using this library or another, but this one being currently maintained (releases 3 months ago, 4 months ago), provides many configuration options and features, and has good TS support, is good enough for this POC app. Customizing styling is proving to take longer than expected, so some styling issues will remain.</td>
+  </tr>
 </table>
