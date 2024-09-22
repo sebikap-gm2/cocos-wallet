@@ -1,6 +1,5 @@
 import { DS } from "@/design-system";
-import { InstrumentItem, INSTRUMENTS_COLUMNS } from "@/features";
-import { searchService } from "@/services/http/search.service";
+import { InstrumentItem, searchService } from "@/features";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { FlatList, SafeAreaView, StyleSheet } from "react-native";

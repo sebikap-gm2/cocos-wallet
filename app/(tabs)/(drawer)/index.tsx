@@ -1,22 +1,19 @@
 import { DS } from "@/design-system";
-import { PortfolioItem } from "@/features";
-import { portfolioService } from "@/services";
+import { usePortfolioItems } from "@/features";
 import { formatCurrency } from "@/utils";
-import { useQuery } from "@tanstack/react-query";
-import { FlatList } from "react-native";
 
 export default function HomeScreenComponent() {
-  const query = useQuery({ queryKey: ['portfolio'], queryFn: portfolioService.getPortfolio });
+  const { data, isLoading } = usePortfolioItems()
 
-  if (query.isLoading) {
+  if (isLoading) {
     return <DS.Text>Loading...</DS.Text>;
   }
 
-  if (!query.data) {
+  if (!data) {
     return <DS.Text>Error no data</DS.Text>;
   }
 
-  const total = query.data.reduce((total, item) => total + item.quantity * item.close_price, 0);
+  const total = data.reduce((total, item) => total + item.quantity * item.close_price, 0);
 
   return (
     <DS.PageLayout>
@@ -24,10 +21,6 @@ export default function HomeScreenComponent() {
         <DS.Text type='title'>My Wallet</DS.Text>
         <DS.Text type='subtitle'>{formatCurrency({ value: total })}</DS.Text>
       </DS.View>
-      <FlatList
-        data={query.data}
-        renderItem={({ item }) => <PortfolioItem item={item} />}
-      />
     </DS.PageLayout>
   )
 }

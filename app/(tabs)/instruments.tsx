@@ -1,27 +1,23 @@
 import { DS } from "@/design-system";
-import { InstrumentItem, INSTRUMENTS_COLUMNS } from "@/features";
-import { instrumentsService } from "@/services/http/instruments.service";
-import { useQuery } from "@tanstack/react-query";
+import { InstrumentItem, useInstrumentItems } from "@/features";
 import { FlatList, SafeAreaView, StyleSheet } from "react-native";
 
 export default function Instruments() {
-  const query = useQuery({ queryKey: ['instruments'], queryFn: instrumentsService.getInstruments });
+  const { data, isLoading } = useInstrumentItems();
 
-  if (query.isLoading) {
+  if (isLoading) {
     return null;
   }
 
-  if (!query.data) {
+  if (!data) {
     return <DS.View><DS.Text>Error fetching data</DS.Text></DS.View>
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={query.data}
-        renderItem={({ item }) => <InstrumentItem item={item} />}
-        numColumns={INSTRUMENTS_COLUMNS}
-        columnWrapperStyle={styles.row}
+        data={data}
+        renderItem={({ item, index }) => <InstrumentItem item={item} position={index} />}
         contentContainerStyle={styles.listContainer}
       />
 
@@ -32,12 +28,12 @@ export default function Instruments() {
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    padding: 10
+    margin: 20
   },
   row: {
     justifyContent: 'space-between',
   },
-  listContainer:{
+  listContainer: {
     paddingVertical: 10,
   },
 })
