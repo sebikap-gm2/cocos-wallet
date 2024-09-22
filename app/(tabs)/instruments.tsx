@@ -3,22 +3,22 @@ import { InstrumentItem, useInstrumentItems } from "@/features";
 import { FlatList, SafeAreaView, StyleSheet } from "react-native";
 
 export default function Instruments() {
-  const { data, isLoading } = useInstrumentItems();
+  const { instruments, isLoading } = useInstrumentItems();
 
   if (isLoading) {
     return null;
   }
 
-  if (!data) {
-    return <DS.View><DS.Text>Error fetching data</DS.Text></DS.View>
+  if (!instruments) {
+    return <DS.View><DS.Text>Error fetching instruments</DS.Text></DS.View>
   }
 
   return (
     <DS.PageLayout style={styles.container}>
       <DS.Text type='title'>Instruments</DS.Text>
       <FlatList
-        data={data}
-        renderItem={({ item, index }) => <InstrumentItem item={item} position={index} />}
+        data={instruments}
+        renderItem={({ item }) => <InstrumentItem item={item} />}
         contentContainerStyle={styles.listContainer}
         numColumns={2}
       />

@@ -5,6 +5,7 @@ export interface TInstrument {
   type: InstrumentType;
   last_price: number;
   close_price: number;
+  returnPercentage?: number
 }
 
 export enum InstrumentType {

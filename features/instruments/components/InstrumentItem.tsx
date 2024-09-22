@@ -8,12 +8,10 @@ import { useRouter } from "expo-router";
 
 interface InstrumentItemProps {
   item: TInstrument
-  position: number
 }
 
-export const InstrumentItem = ({ item, position }: InstrumentItemProps) => {
+export const InstrumentItem = ({ item }: InstrumentItemProps) => {
   const router = useRouter()
-  const returnPercentage = Math.round(((item.last_price - item.close_price) / item.close_price) * 100);
 
   const handleInstrumentClick = () => router.navigate({
     pathname: '/(modal)/instrumentDetails',
@@ -31,14 +29,10 @@ export const InstrumentItem = ({ item, position }: InstrumentItemProps) => {
         <DS.Text type='defaultSemiBold'>{item.name}</DS.Text>
         <DS.Text>{formatCurrency({ value: item.last_price, shorten: true })}</DS.Text>
         <DS.View row center spaceBetween>
-          <DS.Text>{returnPercentage}%</DS.Text>
+          <DS.Text>{item.returnPercentage}%</DS.Text>
           <Ionicons name={icon} size={18} color='white' />
         </DS.View>
       </DS.View>
-      {/* <DS.Text>{item.id}</DS.Text> */}
-      {/* <DS.Text>{item.last_price}</DS.Text> */}
-      {/* <DS.Text>{item.type}</DS.Text> */}
-      {/* <DS.Text>{item.close_price}</DS.Text> */}
     </DS.Button>
   );
 }
