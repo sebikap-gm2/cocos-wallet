@@ -39,7 +39,9 @@ export function formatCurrency({ value, locale = 'en-US', currency = 'USD', shor
   if (shorten) {
     const shortInfo = shortenNumber(numericValue);
     const value = parseFloat(shortInfo[0]);
-    return `${formatter.format(Math.round(value))} ${shortInfo[1]}`;
+    const formattedValue = formatter.format(Math.round(value));
+    const n = shortInfo[1];
+    return Boolean(n) ? `${formattedValue} ${n}` : formattedValue;
   }
 
   return formatter.format(numericValue);
