@@ -1,27 +1,33 @@
 import { DS } from "@/design-system";
-import { InstrumentItem, searchService } from "@/features";
-import { useQuery } from "@tanstack/react-query";
+import { InstrumentItem, useSearchItems } from "@/features";
+import { ListEmptyComponent } from "@/shared";
 import { useState } from "react";
 import { FlatList, SafeAreaView, StyleSheet } from "react-native";
 
 export default function Search() {
-  const [ticker, setTicker] = useState('DYC');
-  const query = useQuery({ queryKey: ['search'], queryFn: () => searchService.getInstrumentsByTicker(ticker) });
+  const [text, setText] = useState('');
+  const { data, isLoading } = useSearchItems(text);
 
-  if (query.isLoading) {
+  if (isLoading) {
     return null;
   }
 
-  if (!query.data) {
+  if (!data) {
     return <DS.View><DS.Text>Error fetching data</DS.Text></DS.View>
   }
 
   return (
     <SafeAreaView style={styles.container}>
+      <DS.Text>Discover</DS.Text>
       <FlatList
-        data={query.data}
-        renderItem={({ item }) => <InstrumentItem item={item} />}
-        contentContainerStyle={{ alignItems: 'center' }}
+        data={data}
+        renderItem={({ item, index }) => <InstrumentItem item={item} position={index} />}
+        ListEmptyComponent={<ListEmptyComponent message={`No tickers found for ${text}`} />}
+      />
+      <DS.TextInput
+        autoCorrect={false}
+        value={text}
+        onChangeText={setText}
       />
 
     </SafeAreaView>
