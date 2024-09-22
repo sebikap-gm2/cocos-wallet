@@ -1,12 +1,10 @@
 import { FlatList } from "react-native"
-import { useQuery } from "@tanstack/react-query";
-import { portfolioService } from "@/services";
-import { PortfolioItem } from "./components";
 import { DS } from "@/design-system";
+import { usePortfolioItems } from "../hooks";
+import { PortfolioItem } from "./PortfolioItem";
 
 export const Portfolio = () => {
-  const query = useQuery({ queryKey: ['portfolio'], queryFn: portfolioService.getPortfolio });
-
+  const { data } = usePortfolioItems();
   return (
     <>
       <DS.View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -17,7 +15,7 @@ export const Portfolio = () => {
         <DS.View flex={1}><DS.Text bold center>Last</DS.Text></DS.View>
       </DS.View>
       <FlatList
-        data={query.data}
+        data={data}
         renderItem={({ item, index }) => <PortfolioItem item={item} bg={index % 2 === 0} />}
         style={{ flex: 1 }}
       />

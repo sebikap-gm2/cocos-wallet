@@ -1,5 +1,5 @@
 import { Profile } from "@/features";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { useThemeColor } from "@/design-system";
 import Drawer from "expo-router/drawer";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 

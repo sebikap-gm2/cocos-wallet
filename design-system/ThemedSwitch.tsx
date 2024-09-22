@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Animated, StyleSheet } from 'react-native';
+import { useState, useEffect } from 'react';
+import { Animated, StyleSheet } from 'react-native';
+import { DS } from './index';
 
 interface SwitchProps {
   value: boolean;
@@ -28,7 +29,7 @@ export const ThemedSwitch = ({ value, onChange }: SwitchProps) => {
   });
 
   return (
-    <TouchableOpacity
+    <DS.Button
       style={styles.switchContainer}
       onPress={() => onChange(!value)}
     >
@@ -49,8 +50,8 @@ export const ThemedSwitch = ({ value, onChange }: SwitchProps) => {
           },
         ]}
       />
-      <Text style={styles.switchLabel}>{value ? 'ON' : 'OFF'}</Text>
-    </TouchableOpacity>
+      <DS.Text style={styles.switchLabel}>{value ? 'ON' : 'OFF'}</DS.Text>
+    </DS.Button>
   );
 };
 

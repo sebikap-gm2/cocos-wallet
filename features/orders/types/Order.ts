@@ -13,7 +13,7 @@ export const Order = z.object({
   quantity: z.coerce.number(),
   price: z.coerce.number().optional()
 });
-export type Order = z.infer<typeof Order>
+export type TOrder = z.infer<typeof Order>
 
 export const ORDER_STATUS = z.enum(['PENDING', 'REJECTED', 'FILLED']);
 export const OrderResponse = Order.extend({

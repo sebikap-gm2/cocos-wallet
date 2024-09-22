@@ -1,6 +1,4 @@
-import { GestureResponderEvent, StyleSheet, TouchableOpacity, View, type ViewProps } from 'react-native';
-
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { StyleSheet, View, type ViewProps } from 'react-native';
 
 export type ThemedViewProps = ViewProps & {
   full?: boolean

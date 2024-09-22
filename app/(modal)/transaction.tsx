@@ -1,10 +1,9 @@
 import { DS } from '@/design-system';
+import { TOrder, ORDER_SIDES, ORDER_TYPES, OrderResponse, ordersService, TPortfolioItem, Order } from '@/features';
 import { useRoute } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { StyleSheet } from 'react-native';
 import { z } from 'zod';
-import { ORDER_TYPES, ORDER_SIDES, Order, OrderResponse } from '@/types';
-import { ordersService } from '@/services';
 
 const modalParamsValidator = z.object({
   params: z.object({

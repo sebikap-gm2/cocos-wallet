@@ -20,6 +20,8 @@ export const DS = {
   View: ThemedView,
 } as const
 
+export * from './hooks'
+
 // typography: Typography,
 // palette: Palette,
 // spacing: Spacing,

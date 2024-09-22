@@ -1,4 +1,4 @@
-export interface InstrumentItem {
+export interface TInstrument {
   id: number;
   ticker: string;
   name: string;

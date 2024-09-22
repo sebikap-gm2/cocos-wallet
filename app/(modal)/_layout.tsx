@@ -1,4 +1,3 @@
-import { DS } from '@/design-system';
 import { Stack } from 'expo-router';
 
 export default function ModalLayout() {

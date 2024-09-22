@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { DS } from "@/design-system";
-import { PortfolioItem as TPortfolioItem } from "@/types"
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { useThemeColor } from "@/design-system";
+import { type TPortfolioItem } from "../types";
 import { formatCurrency } from "@/utils";
 
 interface PortfolioItemProps {

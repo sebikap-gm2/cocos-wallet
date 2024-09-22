@@ -1,7 +1,7 @@
 import { TouchableOpacity, StyleSheet, TouchableOpacityProps, StyleProp, ViewStyle } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from './hooks';
 import { ThemedText } from './ThemedText';
 
 type ButtonType = 'primary' | 'secondary' | 'plain';

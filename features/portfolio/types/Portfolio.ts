@@ -1,4 +1,4 @@
-export interface PortfolioItem {
+export interface TPortfolioItem {
   instrument_id:  number;
   ticker:         string;
   quantity:       number;

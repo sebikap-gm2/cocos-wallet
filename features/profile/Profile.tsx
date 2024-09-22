@@ -3,10 +3,10 @@ import { StyleSheet } from 'react-native';
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
 import * as Application from 'expo-application';
 import { Ionicons } from '@expo/vector-icons';
-import { useThemeColor } from '@/hooks/useThemeColor';
-import { ProfileMenu } from './ProfileMenu';
-import { Portfolio } from './Portfolio';
+import { useThemeColor } from '@/design-system';
 import { DS } from '@/design-system';
+import { ProfileActions, ProfileMenu } from './components';
+import { Portfolio } from '../portfolio';
 
 interface ProfileProps extends DrawerContentComponentProps { }
 
@@ -30,6 +30,9 @@ export const Profile = ({ navigation }: ProfileProps) => {
           />
         </DS.Button>
       </DS.View>
+      <DS.View>
+        <ProfileActions />
+      </DS.View>
       <DS.View flex={2}>
         <Portfolio />
       </DS.View>
@@ -38,6 +41,7 @@ export const Profile = ({ navigation }: ProfileProps) => {
       </DS.View>
       {/* <DrawerItemList {...props} /> */}
       {/* </DrawerContentScrollView> */}
+      <DS.Text>App Version: {Application.nativeApplicationVersion}</DS.Text>
       <DS.Text>App Version: {Application.nativeBuildVersion}</DS.Text>
     </DS.PageLayout>
   );

@@ -6,10 +6,9 @@
 import { useColorScheme } from 'react-native';
 import { useMemo } from 'react';
 import { NestedKeys } from '@/utils';
-import { DS } from '@/design-system';
-import { HexColor } from '@/design-system/constants';
+import { Colors, HexColor } from '../constants';
 
-type ColorKeys = NestedKeys<typeof DS.Colors['light']>;
+type ColorKeys = NestedKeys<typeof Colors['light']>;
 
 const getNestedValue = (obj: any, path: string) => {
   return path.split('.').reduce((acc, part) => acc && acc[part], obj);
@@ -18,7 +17,7 @@ const getNestedValue = (obj: any, path: string) => {
 export function useThemeColor(key: ColorKeys & string) {
   const theme = useColorScheme() ?? 'light';
   return useMemo(() => {
-    const colorObject = DS.Colors[theme];
+    const colorObject = Colors[theme];
     return getNestedValue(colorObject, key) as HexColor
   }, [key]);
 };

@@ -1,6 +1,6 @@
 import { Dropdown } from 'react-native-element-dropdown';
 import { DropdownProps } from 'react-native-element-dropdown/lib/typescript/components/Dropdown/model';
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { useThemeColor } from './hooks';
 
 interface ThemedDropdownProps<T> extends DropdownProps<T> { }
 
