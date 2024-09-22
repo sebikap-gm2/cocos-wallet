@@ -42,6 +42,18 @@
     <td>Given that this is a POC app, with a time constraint, where I would be working alone, I decided for a simple main branch repository approach, to avoid the unnecessary work that other Git flow approaches bring. If more time was provided, or more people were involved, this would not be an option.</td>
   </tr>
   <tr>
+    <td>Deployment and development builds</td>
+    <td>Firebase App distribution</td>
+    <td>EAS (Expo Application Services)</td>
+    <td>All apps end up being deployed through App Store Connect for iOS, and Play Store Console for Android. The benefit of these tools, is that they help with the creation of those native builds, as well as providing dev builds that can be tested with. EAS provides the capability of pushing changes (depending on what the changes are) without having to go through the app store or play store approval process. It also comes almost out of the box when creating an Expo app, so for this POC, it was perfect =D</td>
+  </tr>
+  <tr>
+    <td>Error handling</td>
+    <td>Rollbar, Bugsnag, Firebase Crashlytics</td>
+    <td>Sentry</td>
+    <td>All tool have their benefit, in this case I went with Sentry as it is a tool I am familiar with, has a free tier, and is easy to set up.</td>
+  </tr>
+  <tr>
     <td>Styling</td>
     <td>Inline styles, Styled components, Component library </td>
     <td>RN Stylesheet</td>
