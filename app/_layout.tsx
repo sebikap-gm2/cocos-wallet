@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { Stack } from 'expo-router';
-import { Providers } from '@/shared';
+import { ProvidersComponent } from '@/shared';
 import * as Sentry from '@sentry/react-native';
 import env from '@/env';
 
@@ -34,11 +34,11 @@ export default function RootLayout() {
   }
 
   return (
-    <Providers>
+    <ProvidersComponent>
       <Stack>
         <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
         <Stack.Screen name='(modal)' options={{ presentation: 'modal', headerShown: false }} />
       </Stack>
-    </Providers>
+    </ProvidersComponent>
   );
 }
