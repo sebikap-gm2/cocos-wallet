@@ -30,20 +30,20 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="instruments"
-        options={{
-          tabBarLabel: () => null,
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'cash' : 'cash-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
         name="search"
         options={{
           tabBarLabel: () => null,
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'search' : 'search-outline'} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="instruments"
+        options={{
+          tabBarLabel: () => null,
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'cash' : 'cash-outline'} color={color} />
           ),
         }}
       />
