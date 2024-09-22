@@ -1,4 +1,5 @@
 import env from "@/env";
+import * as Sentry from '@sentry/react-native';
 
 interface RequestOptions extends RequestInit {
   params?: Record<string, any>;
@@ -47,7 +48,9 @@ export class HttpClient {
   private async handleResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
       const error = await response.json();
-      throw new Error(`HTTP error! Status: ${response.status}, Message: ${error.message || 'Unknown error'}`);
+      const errorInstance = new Error(`HTTP error! Status: ${response.status}, Message: ${error.message || 'Unknown error'}`);
+      Sentry.captureException(errorInstance);
+      throw errorInstance;
     }
 
     const data = await response.json();

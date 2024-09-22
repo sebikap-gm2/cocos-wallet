@@ -5,6 +5,15 @@ import 'react-native-reanimated';
 
 import { Stack } from 'expo-router';
 import { Providers } from '@/shared';
+import * as Sentry from '@sentry/react-native';
+import env from '@/env';
+
+Sentry.init({
+  dsn: env.EXPO_PUBLIC_SENTRY_URL,
+
+  // uncomment the line below to enable Spotlight (https://spotlightjs.com)
+  // enableSpotlight: __DEV__,
+});
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
