@@ -1,5 +1,5 @@
 import { DS } from '@/design-system';
-import { TOrder, ORDER_SIDES, ORDER_TYPES, OrderResponse, ordersService, TPortfolioItem, Order } from '@/features';
+import { TOrder, ORDER_SIDES, ORDER_TYPES, OrderResponse, ordersService, Order, usePortfolioItems } from '@/features';
 import { useRoute } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { StyleSheet } from 'react-native';
@@ -14,8 +14,9 @@ const modalParamsValidator = z.object({
 
 export default function TransactionModal() {
   const route = useRoute();
+  const { data, isLoading, isError } = usePortfolioItems()
   const { params } = modalParamsValidator.parse(route);
-  const { control, handleSubmit, watch, formState: { errors } } = useForm<Order>({
+  const { control, handleSubmit, watch, formState: { errors } } = useForm<TOrder>({
     defaultValues: {
       instrument_id: params.instrumentId,
       side: 'BUY',
@@ -26,8 +27,15 @@ export default function TransactionModal() {
 
   if (!params) return null;
   if (!params.instrumentId) return null;
+  if (!data) return null;
 
-  const onSubmit = async (data: Order) => {
+  const mappedOptions = data.map(o => ({
+    ...o,
+    id: o.instrument_id,
+    title: o.ticker
+  }))
+
+  const onSubmit = async (data: TOrder) => {
     try {
       const parsedData = Order.parse(data);
       const response = await ordersService.sendOrder(parsedData)
@@ -40,7 +48,24 @@ export default function TransactionModal() {
 
   return (
     <DS.View full style={styles.container}>
-      <DS.Text>{params.ticker}</DS.Text>
+      <DS.Text type='title'>Transaction</DS.Text>
+      <Controller
+        name='instrument_id'
+        control={control}
+        render={({ field }) => (
+          <DS.View full>
+            <DS.DropDown
+              data={mappedOptions}
+              valueField='instrument_id'
+              labelField='ticker'
+              searchField='ticker'
+              onChange={({ instrument_id }) => field.onChange(instrument_id)}
+              value={mappedOptions.find(o => o.instrument_id === field.value)}
+              searchPlaceholder='Seach by ticker...'
+            />
+          </DS.View>
+        )}
+      />
       <Controller
         name="side"
         control={control}
@@ -117,6 +142,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    padding: 10,
+    gap: 15,
+    padding: '5%',
+    paddingTop: '10%',
   },
 });
