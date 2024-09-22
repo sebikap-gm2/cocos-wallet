@@ -4,17 +4,18 @@ export type ThemedViewProps = ViewProps & {
   center?: boolean
   flex?: number
   full?: boolean
+  gap?: number,
   row?: boolean
   spaceBetween?: boolean
 };
 
-export function ThemedView({ style, flex, center, row, full, spaceBetween, ...otherProps }: ThemedViewProps) {
+export function ThemedView({ style, flex, center, row, gap, full, spaceBetween, ...otherProps }: ThemedViewProps) {
   return (
     <View
       style={[
         styles.container,
         full && styles.full,
-        flex && { flex },
+        { flex, gap, },
         center && { alignItems: 'center' },
         row && { flexDirection: 'row' },
         spaceBetween && { justifyContent: 'space-between' },

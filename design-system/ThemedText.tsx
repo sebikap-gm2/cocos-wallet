@@ -13,6 +13,7 @@ export function ThemedText({
   center = false,
   flex = undefined,
   type = 'default',
+  style,
   ...rest
 }: ThemedTextProps) {
   // TODO: Overriding color as it is not being applied directly by the theme.
@@ -30,6 +31,7 @@ export function ThemedText({
         type === 'subtitle' ? styles.subtitle : undefined,
         type === 'link' ? styles.link : undefined,
         type === 'error' ? styles.link : undefined,
+        style
       ]}
       {...rest}
     />
