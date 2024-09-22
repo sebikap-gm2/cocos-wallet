@@ -1,8 +1,8 @@
-import { DS } from "@/design-system"
 import { FlatList } from "react-native"
-import { PortfolioItem } from "../portfolio"
 import { useQuery } from "@tanstack/react-query";
 import { portfolioService } from "@/services";
+import { PortfolioItem } from "./components";
+import { DS } from "@/design-system";
 
 export const Portfolio = () => {
   const query = useQuery({ queryKey: ['portfolio'], queryFn: portfolioService.getPortfolio });

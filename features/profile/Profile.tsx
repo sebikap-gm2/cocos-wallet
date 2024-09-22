@@ -1,15 +1,12 @@
 import React from 'react';
-import { FlatList, ScrollView, StyleSheet } from 'react-native';
-import { DrawerContentComponentProps, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
-import { DS } from '@/design-system';
-import { useQuery } from '@tanstack/react-query';
-import { portfolioService } from '@/services';
-import { PortfolioItem } from '../portfolio';
+import { StyleSheet } from 'react-native';
+import { DrawerContentComponentProps } from '@react-navigation/drawer';
 import * as Application from 'expo-application';
 import { Ionicons } from '@expo/vector-icons';
 import { useThemeColor } from '@/hooks/useThemeColor';
 import { ProfileMenu } from './ProfileMenu';
 import { Portfolio } from './Portfolio';
+import { DS } from '@/design-system';
 
 interface ProfileProps extends DrawerContentComponentProps { }
 
