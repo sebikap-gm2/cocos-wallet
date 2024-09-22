@@ -1,12 +1,12 @@
 import { DS } from "@/design-system";
-import { InstrumentItem as TInsturmentItem } from "@/types";
 import { StyleSheet } from "react-native";
 import { router } from "expo-router";
 import { formatCurrency } from "@/utils";
+import { TInstrument } from "../types";
 
 
 interface InstrumentItemProps {
-  item: TInsturmentItem
+  item: TInstrument
   position: number
 }
 
