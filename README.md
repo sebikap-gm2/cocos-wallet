@@ -30,6 +30,12 @@
     <td>Expo is a framework that uses RN under the hood. Expo manages the native part of RN. It also provides an extensive toolkit that helps solve many typical requirements, such as navigation, camera, location, and more. It also provides the ability to The counterpart is that since it's built over RN, it does not provide all the functionality RN provides, but it is more than enough for most use cases.</td>
   </tr>
   <tr>
+    <td>Project Structure</td>
+    <td>Layered based (Vertical)</td>
+    <td>Feature based (Horizontal)</td>
+    <td>Both approaches have their strong and weaks points. In this case, I chose a feature based approach as I believe the benefits of having everything needed for a feature inside it's own folder, helps to understand better the approach.</td>
+  </tr>
+  <tr>
     <td>Styling</td>
     <td>Inline styles, Styled components, Component library </td>
     <td>RN Stylesheet</td>
