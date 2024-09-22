@@ -25,10 +25,11 @@ export function ThemedButton({
   text,
   type = 'primary',
   children,
+  style,
   ...rest
 }: ThemedButtonProps) {
   const color = useThemeColor('colors.primary');
-  const backgroundColor = useThemeColor('colors.card');
+  const backgroundColor = useThemeColor('colors.textLight');
 
   return (
     <TouchableOpacity
@@ -40,6 +41,7 @@ export function ThemedButton({
         background && { backgroundColor },
         type === 'secondary' && { backgroundColor: undefined, borderWidth: 1, borderColor: backgroundColor },
         type === 'plain' && {backgroundColor: undefined },
+        style
       ]}
       {...rest}
     >
