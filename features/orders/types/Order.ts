@@ -20,4 +20,4 @@ export const OrderResponse = Order.extend({
   id: z.number(),
   status: ORDER_STATUS
 })
-export type OrderResponse = z.infer<typeof OrderResponse>
+export type TOrderResponse = z.infer<typeof OrderResponse>

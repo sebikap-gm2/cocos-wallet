@@ -19,5 +19,5 @@ export function useThemeColor(key: ColorKeys & string) {
   return useMemo(() => {
     const colorObject = Colors[theme];
     return getNestedValue(colorObject, key) as HexColor
-  }, [key]);
+  }, [key, theme]);
 };

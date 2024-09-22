@@ -1,6 +1,6 @@
 import { DS } from "@/design-system";
 import { InstrumentItem, useInstrumentItems } from "@/features";
-import { FlatList, SafeAreaView, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 
 export default function Instruments() {
   const { instruments, isLoading } = useInstrumentItems();

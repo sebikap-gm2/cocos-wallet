@@ -1,4 +1,4 @@
-import { TouchableOpacity, StyleSheet, TouchableOpacityProps, StyleProp, ViewStyle } from 'react-native';
+import { TouchableOpacity, StyleSheet, TouchableOpacityProps } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 import { useThemeColor } from './hooks';

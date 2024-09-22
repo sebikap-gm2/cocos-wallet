@@ -14,7 +14,7 @@ const modalParamsValidator = z.object({
 
 export default function TransactionModal() {
   const route = useRoute();
-  const { data, isLoading, isError } = usePortfolioItems()
+  const { data } = usePortfolioItems()
   const { params } = modalParamsValidator.parse(route);
   const { control, handleSubmit, watch, formState: { errors } } = useForm<TOrder>({
     defaultValues: {

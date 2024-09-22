@@ -16,7 +16,7 @@ export const useInstrumentItems = () => {
 
     // If we want we can keep previous ones and operate with them. For now, replacing.
     setInstruments(prev => instrumentsWithAddedFields ?? []);
-  }, [data]);
+  }, [data, setInstruments]);
 
   return { instruments, isError, isLoading }
 }

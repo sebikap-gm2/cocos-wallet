@@ -17,7 +17,7 @@ export const ThemedSwitch = ({ value, onChange }: SwitchProps) => {
       duration: 300,
       useNativeDriver: false,
     }).start();
-  }, [value]);
+  }, [value, animation]);
 
   const interpolatedBackgroundColor = animation.interpolate({
     inputRange: [0, 1],

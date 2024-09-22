@@ -1,13 +1,11 @@
 import { useThemeColor } from './hooks';
-import React, { ReactNode, useState } from 'react';
+import { useEffect } from 'react';
 import { View, Text, TouchableOpacity, Animated, StyleSheet, Dimensions } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
 type Tab = {
-  // id: string
   title: string
-  // content: JSX.Element
 }
 
 interface ThemedTabsProps {
@@ -17,17 +15,17 @@ interface ThemedTabsProps {
 }
 
 export const ThemedTabs = ({ options, selectedValue, setSelectedValue }: ThemedTabsProps) => {
-  const animation = new Animated.Value(0);
   const color = useThemeColor('colors.text')
   const backgroundColor = useThemeColor('colors.background')
 
-  React.useEffect(() => {
+  useEffect(() => {
+    const animation = new Animated.Value(0);
     Animated.timing(animation, {
       toValue: selectedValue === options[0].title ? 0 : width,
       duration: 300,
       useNativeDriver: true,
     }).start();
-  }, [selectedValue]);
+  }, [selectedValue, options]);
 
 
   // const Content = options[activeTabIndex].content;
@@ -48,28 +46,6 @@ export const ThemedTabs = ({ options, selectedValue, setSelectedValue }: ThemedT
           );
         })}
       </View>
-
-      {/* Animated View */}
-      {/* <Animated.View
-        style={[
-          styles.contentContainer,
-          {
-            transform: [{ translateX: animation }],
-          },
-        ]}
-      >
-        {options[activeTabIndex].content}
-        {/* {activeTabIndex === 'tab1' ? ( */}
-      {/* <View style={styles.tabContent}>
-          {Content}
-          <Text style={styles.contentText}>Content for Tab 1</Text>
-        </View> */}
-      {/* ) : ( */}
-      {/* <View style={styles.tabContent}> */}
-      {/* <Text style={styles.contentText}>Content for Tab 2</Text> */}
-      {/* </View> */}
-      {/* )} */}
-      {/* </Animated.View> */}
     </View>
   );
 };

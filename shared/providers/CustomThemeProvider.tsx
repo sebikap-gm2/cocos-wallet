@@ -1,5 +1,5 @@
 import { DS } from "@/design-system";
-import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
+import { ThemeProvider } from "@react-navigation/native";
 import { PropsWithChildren } from "react";
 import { useColorScheme } from "react-native";
 
