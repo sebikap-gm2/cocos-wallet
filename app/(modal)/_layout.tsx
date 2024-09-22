@@ -8,6 +8,7 @@ export default function ModalLayout() {
         presentation: 'modal',
       }}
     >
+      <Stack.Screen name="instrumentDetails" />
       <Stack.Screen name="settings" />
       <Stack.Screen name="transaction" />
     </Stack>

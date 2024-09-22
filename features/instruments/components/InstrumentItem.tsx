@@ -1,8 +1,9 @@
 import { DS } from "@/design-system";
 import { StyleSheet } from "react-native";
-import { router } from "expo-router";
 import { formatCurrency } from "@/utils";
-import { TInstrument } from "../types";
+import { InstrumentType, TInstrument } from "../types";
+import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 
 interface InstrumentItemProps {
@@ -11,31 +12,28 @@ interface InstrumentItemProps {
 }
 
 export const InstrumentItem = ({ item, position }: InstrumentItemProps) => {
-  const returnPrice = item.last_price - item.close_price;
-  const roundedReturnPrice = Math.round((returnPrice + Number.EPSILON) * 100) / 100
+  const router = useRouter()
+  const returnPercentage = Math.round(((item.last_price - item.close_price) / item.close_price) * 100);
 
   const handleInstrumentClick = () => router.navigate({
-    pathname: '/(modal)/transaction',
+    pathname: '/(modal)/instrumentDetails',
     params: {
-      instrumentId: item.id,
-      ticker: item.ticker
+      instrumentId: item.id
     }
   });
 
+  const icon = item.type === InstrumentType.ACCIONES ? 'stats-chart-outline' : 'cash-outline';
+
   return (
-    <DS.Button style={styles.container} onPress={handleInstrumentClick}>
-      <DS.View flex={0.5} center>
-        <DS.Text>{position}</DS.Text>
-      </DS.View>
-      <DS.View flex={0.5} center>
-        <DS.Text>LOG</DS.Text>
-      </DS.View>
-      <DS.View flex={3}>
-        <DS.Text>{item.name}</DS.Text>
-        <DS.Text>{item.ticker}</DS.Text>
-      </DS.View>
-      <DS.View flex={1} center>
-        <DS.Text>{formatCurrency({ value: roundedReturnPrice, shorten: true })}</DS.Text>
+    <DS.Button type="secondary" style={styles.container} onPress={handleInstrumentClick}>
+      <DS.View flex={1} spaceBetween>
+        <DS.Text type="subtitle">{item.ticker}</DS.Text>
+        <DS.Text type='defaultSemiBold'>{item.name}</DS.Text>
+        <DS.Text>{formatCurrency({ value: item.last_price, shorten: true })}</DS.Text>
+        <DS.View row center spaceBetween>
+          <DS.Text>{returnPercentage}%</DS.Text>
+          <Ionicons name={icon} size={18} color='white' />
+        </DS.View>
       </DS.View>
       {/* <DS.Text>{item.id}</DS.Text> */}
       {/* <DS.Text>{item.last_price}</DS.Text> */}
@@ -47,9 +45,10 @@ export const InstrumentItem = ({ item, position }: InstrumentItemProps) => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     margin: 5,
     padding: 5,
-    borderRadius: 10,
+    // borderRadius: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

@@ -14,24 +14,24 @@ export default function Instruments() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <DS.PageLayout style={styles.container}>
+      <DS.Text type='title'>Instruments</DS.Text>
       <FlatList
         data={data}
         renderItem={({ item, index }) => <InstrumentItem item={item} position={index} />}
         contentContainerStyle={styles.listContainer}
+        numColumns={2}
       />
 
-    </SafeAreaView>
+    </DS.PageLayout>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    margin: 20
-  },
-  row: {
-    justifyContent: 'space-between',
+    // margin: 10,
+    margin: 20,
   },
   listContainer: {
     paddingVertical: 10,
