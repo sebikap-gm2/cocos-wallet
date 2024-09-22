@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Animated, StyleSheet } from 'react-native';
-import { DS } from './index';
+import { ThemedButton } from './ThemedButton';
+import { ThemedText } from './ThemedText';
 
 interface SwitchProps {
   value: boolean;
@@ -29,7 +30,7 @@ export const ThemedSwitch = ({ value, onChange }: SwitchProps) => {
   });
 
   return (
-    <DS.Button
+    <ThemedButton
       style={styles.switchContainer}
       onPress={() => onChange(!value)}
     >
@@ -50,8 +51,8 @@ export const ThemedSwitch = ({ value, onChange }: SwitchProps) => {
           },
         ]}
       />
-      <DS.Text style={styles.switchLabel}>{value ? 'ON' : 'OFF'}</DS.Text>
-    </DS.Button>
+      <ThemedText style={styles.switchLabel}>{value ? 'ON' : 'OFF'}</ThemedText>
+    </ThemedButton>
   );
 };
 
