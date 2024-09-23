@@ -14,7 +14,7 @@ export const InstrumentItem = ({ item }: InstrumentItemProps) => {
 
   const handleInstrumentClick = () =>
     router.navigate({
-      pathname: '/(modal)/instrumentDetails',
+      pathname: '/(modal)/transaction',
       params: {
         instrumentId: item.id,
       },

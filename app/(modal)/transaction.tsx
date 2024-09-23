@@ -3,27 +3,28 @@ import {
   TOrder,
   ORDER_SIDES,
   ORDER_TYPES,
+  useInstrumentItems,
+  instrumentItemSelector,
+  useOrderAction,
   OrderResponse,
-  ordersService,
-  Order,
-  usePortfolioItems,
 } from '@/features';
 import { useRoute } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { StyleSheet } from 'react-native';
+import { useRecoilValue } from 'recoil';
 import { z } from 'zod';
 
 const modalParamsValidator = z.object({
   params: z.object({
     instrumentId: z.coerce.number().int(),
-    ticker: z.string(),
   }),
 });
 
 export default function TransactionModal() {
   const route = useRoute();
-  const { portfolioItems } = usePortfolioItems();
   const { params } = modalParamsValidator.parse(route);
+  const { instruments } = useInstrumentItems();
+  const { orderMutation } = useOrderAction();
   const {
     control,
     handleSubmit,
@@ -37,23 +38,16 @@ export default function TransactionModal() {
     },
   });
   const watchType = watch('type');
+  const watchSelectedInstrumentId = watch('instrument_id');
+  const selectedInstrument = useRecoilValue(instrumentItemSelector(watchSelectedInstrumentId));
 
   if (!params) return null;
   if (!params.instrumentId) return null;
-  if (!portfolioItems) return null;
+  if (!instruments) return null;
 
-  const mappedOptions = portfolioItems.map((o) => ({
-    ...o,
-    id: o.instrument_id,
-    title: o.ticker,
-  }));
-
-  const onSubmit = async (data: TOrder) => {
+  const onSubmit = (data: TOrder) => {
     try {
-      const parsedData = Order.parse(data);
-      const response = await ordersService.sendOrder(parsedData);
-      const parsedResponse = OrderResponse.parse(response);
-      console.info({ parsedResponse });
+      orderMutation.mutate(data);
     } catch (err) {
       console.error({ err });
     }
@@ -68,12 +62,12 @@ export default function TransactionModal() {
         render={({ field }) => (
           <DS.View full>
             <DS.DropDown
-              data={mappedOptions}
-              valueField="instrument_id"
+              data={instruments}
+              valueField="id"
               labelField="ticker"
               searchField="ticker"
-              onChange={({ instrument_id }) => field.onChange(instrument_id)}
-              value={mappedOptions.find((o) => o.instrument_id === field.value)}
+              onChange={({ id }) => field.onChange(id)}
+              value={selectedInstrument}
               searchPlaceholder="Seach by ticker..."
             />
           </DS.View>
@@ -147,6 +141,14 @@ export default function TransactionModal() {
         </>
       ) : null}
       <DS.Button text="Submit" onPress={handleSubmit(onSubmit)} />
+      <OrderResponse orderMutation={orderMutation} />
+      {/* {orderMutation.isPending ? <Spinner /> : null}
+      {orderResponse ? (
+        <>
+          <DS.Text>Order ID: {orderResponse.id}</DS.Text>
+          <DS.Text>Status: {orderResponse.status}</DS.Text>
+        </>
+      ) : null} */}
     </DS.View>
   );
 }

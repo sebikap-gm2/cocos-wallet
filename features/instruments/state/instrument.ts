@@ -1,12 +1,12 @@
 import { selectorFamily } from 'recoil';
-import { instrumentsAtom } from './instruments';
+import { instrumentsSelector } from './instruments';
 
-export const instrumentSelector = selectorFamily({
+export const instrumentItemSelector = selectorFamily({
   key: 'instrument',
   get:
     (filter) =>
     ({ get }) => {
-      const instruments = get(instrumentsAtom);
+      const instruments = get(instrumentsSelector);
       return instruments.find((i) => i.id === filter);
     },
 });

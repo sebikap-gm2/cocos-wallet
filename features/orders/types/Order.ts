@@ -6,18 +6,18 @@ export type ORDER_SIDE = z.infer<typeof ORDER_SIDES>;
 export const ORDER_TYPES = z.enum(['MARKET', 'LIMIT']);
 export type ORDER_TYPE = z.infer<typeof ORDER_TYPES>;
 
-export const Order = z.object({
+export const OrderValidator = z.object({
   instrument_id: z.number().int(),
   side: ORDER_SIDES,
   type: ORDER_TYPES,
   quantity: z.coerce.number(),
   price: z.coerce.number().optional(),
 });
-export type TOrder = z.infer<typeof Order>;
+export type TOrder = z.infer<typeof OrderValidator>;
 
 export const ORDER_STATUS = z.enum(['PENDING', 'REJECTED', 'FILLED']);
-export const OrderResponse = Order.extend({
+export const OrderResponseValidator = OrderValidator.extend({
   id: z.number(),
   status: ORDER_STATUS,
 });
-export type TOrderResponse = z.infer<typeof OrderResponse>;
+export type TOrderResponse = z.infer<typeof OrderResponseValidator>;
