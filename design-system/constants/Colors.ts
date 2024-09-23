@@ -3,18 +3,6 @@ import { Theme } from '@react-navigation/native';
 
 export type HexColor = `#${string}`;
 
-interface Palette {
-  primary: HexColor;
-  secondary: HexColor;
-  accent: HexColor;
-  success: HexColor;
-  error: HexColor;
-  warning: HexColor;
-}
-export type PaletteColor = keyof Palette & string;
-
-export type ThemeColor = keyof Theme & string;
-
 export interface IColors {
   light: Theme & { colors: { textLight: string } };
   dark: Theme & { colors: { textLight: string } };

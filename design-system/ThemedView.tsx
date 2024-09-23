@@ -1,4 +1,4 @@
-import { StyleSheet, View, type ViewProps } from 'react-native';
+import { ScrollView, StyleSheet, View, type ViewProps } from 'react-native';
 
 export type ThemedViewProps = ViewProps & {
   center?: boolean;
@@ -7,6 +7,7 @@ export type ThemedViewProps = ViewProps & {
   gap?: number;
   justifyCenter?: boolean;
   row?: boolean;
+  scroll?: boolean;
   spaceBetween?: boolean;
 };
 
@@ -18,11 +19,13 @@ export function ThemedView({
   gap,
   full,
   justifyCenter,
+  scroll,
   spaceBetween,
   ...otherProps
 }: ThemedViewProps) {
+  const Component = scroll ? ScrollView : View;
   return (
-    <View
+    <Component
       style={[
         styles.container,
         full && styles.full,
