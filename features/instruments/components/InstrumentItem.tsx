@@ -24,7 +24,7 @@ export const InstrumentItem = ({ item }: InstrumentItemProps) => {
 
   return (
     <DS.Button type="secondary" style={styles.container} onPress={handleInstrumentClick}>
-      <DS.View flex={1} spaceBetween>
+      <DS.View flex={1} full spaceBetween>
         <DS.Text type="subtitle">{item.ticker}</DS.Text>
         <DS.Text type="defaultSemiBold">{item.name}</DS.Text>
         <DS.Text>{formatCurrency({ value: item.last_price, shorten: true })}</DS.Text>
@@ -44,10 +44,6 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 5,
     padding: 5,
-    // borderRadius: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     gap: 3,
     flexWrap: 'wrap',
   },
