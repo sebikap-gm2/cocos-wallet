@@ -2,7 +2,7 @@ import { atom, selector } from 'recoil';
 import { TPortfolioItem } from '../types';
 
 export const portfolioItemsAtom = atom<TPortfolioItem[]>({
-  key: 'portfolioItems',
+  key: 'portfolioItems-base',
   default: [],
 });
 

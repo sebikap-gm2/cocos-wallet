@@ -2,7 +2,7 @@ import { atom, selector } from 'recoil';
 import { TInstrument } from '../types';
 
 export const instrumentsAtom = atom<TInstrument[]>({
-  key: 'instruments',
+  key: 'instruments-base',
   default: [],
 });
 
