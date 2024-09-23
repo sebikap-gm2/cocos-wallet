@@ -5,6 +5,7 @@ export type ThemedViewProps = ViewProps & {
   flex?: number;
   full?: boolean;
   gap?: number;
+  justifyCenter?: boolean;
   row?: boolean;
   spaceBetween?: boolean;
 };
@@ -16,6 +17,7 @@ export function ThemedView({
   row,
   gap,
   full,
+  justifyCenter,
   spaceBetween,
   ...otherProps
 }: ThemedViewProps) {
@@ -27,6 +29,7 @@ export function ThemedView({
         { flex, gap },
         center && { alignItems: 'center' },
         row && { flexDirection: 'row' },
+        justifyCenter && { justifyContent: 'center' },
         spaceBetween && { justifyContent: 'space-between' },
         style,
       ]}

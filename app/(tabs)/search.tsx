@@ -8,20 +8,8 @@ export default function Search() {
   const [text, setText] = useState('');
   const { data, isLoading } = useSearchItems(text);
 
-  if (isLoading) {
-    return null;
-  }
-
-  if (!data) {
-    return (
-      <DS.View>
-        <DS.Text>Error fetching data</DS.Text>
-      </DS.View>
-    );
-  }
-
   return (
-    <DS.PageLayout style={styles.container}>
+    <DS.PageLayout isLoading={isLoading} style={styles.container}>
       <DS.Text type="title">Discover</DS.Text>
       <FlatList
         data={data}

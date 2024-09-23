@@ -5,20 +5,8 @@ import { FlatList, StyleSheet } from 'react-native';
 export default function Instruments() {
   const { instruments, isLoading } = useInstrumentItems();
 
-  if (isLoading) {
-    return null;
-  }
-
-  if (!instruments) {
-    return (
-      <DS.View>
-        <DS.Text>Error fetching instruments</DS.Text>
-      </DS.View>
-    );
-  }
-
   return (
-    <DS.PageLayout style={styles.container}>
+    <DS.PageLayout isLoading={isLoading} style={styles.container}>
       <DS.Text type="title">Instruments</DS.Text>
       <FlatList
         data={instruments}
