@@ -1,12 +1,12 @@
 import { DS } from '@/design-system';
 import { ReactNode } from 'react';
 
-interface InstrumentDetailsRowProps {
+interface PortfolioItemDetailsRowProps {
   title: string;
   value: ReactNode;
 }
 
-export const InstrumentDetailsRow = ({ title, value }: InstrumentDetailsRowProps) => {
+export const PortfolioItemDetailsRow = ({ title, value }: PortfolioItemDetailsRowProps) => {
   return (
     <DS.View>
       <DS.Text style={{ fontSize: 12 }}>{title}</DS.Text>
