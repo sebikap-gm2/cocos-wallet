@@ -1,5 +1,5 @@
 import { DS } from '@/design-system';
-import { InstrumentDetailsRow, instrumentSelector, InstrumentType } from '@/features';
+import { InstrumentDetailsRow, instrumentSelector } from '@/features';
 import { formatCurrency } from '@/utils';
 import { Ionicons } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/native';
@@ -19,7 +19,7 @@ export default function InstrumentDetails() {
 
   if (!instrument) return null;
 
-  const icon = instrument.type === InstrumentType.ACCIONES ? 'stats-chart-outline' : 'cash-outline';
+  const icon = instrument.type === 'ACCIONES' ? 'stats-chart-outline' : 'cash-outline';
 
   return (
     <DS.View flex={1} full gap={20} style={{ padding: 20 }}>

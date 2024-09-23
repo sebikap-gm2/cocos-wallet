@@ -1,9 +1,11 @@
 import { httpClient } from '@/shared';
-import { TInstrument } from '../types';
+import { InstrumentsValidator, TInstrument } from '../types';
 
 class InstrumentsService {
   async getInstruments() {
-    return await httpClient.get<TInstrument[]>('/instruments');
+    const response = await httpClient.get<TInstrument[]>('/instruments');
+    const validatedResponse = InstrumentsValidator.parse(response);
+    return validatedResponse;
   }
 }
 

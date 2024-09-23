@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { portfolioService } from '../../profile/services';
+import { portfolioService } from '../services';
 import { useEffect } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { portfolioItemsAtom, portfolioItemsSelector } from '../state';

@@ -1,7 +1,7 @@
 import { DS } from '@/design-system';
 import { StyleSheet } from 'react-native';
 import { formatCurrency } from '@/utils';
-import { InstrumentType, TInstrument } from '../types';
+import { TInstrument } from '../types';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 
@@ -20,7 +20,7 @@ export const InstrumentItem = ({ item }: InstrumentItemProps) => {
       },
     });
 
-  const icon = item.type === InstrumentType.ACCIONES ? 'stats-chart-outline' : 'cash-outline';
+  const icon = item.type === 'ACCIONES' ? 'stats-chart-outline' : 'cash-outline';
 
   return (
     <DS.Button type="secondary" style={styles.container} onPress={handleInstrumentClick}>
