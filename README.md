@@ -1,5 +1,7 @@
 # Cocos Wallet
+[Android Preview version](https://expo.dev/accounts/sebikap/projects/cocos-wallet/builds/657944d2-6358-4e4b-98e0-f42a9b9b194e)
 
+iOS preview version is not available due to restrictions, paid credentials are needed.
 
 ## Get started
 
@@ -8,12 +10,19 @@
    ```bash
    yarn install
    ```
+2. Download Expo Go App
+- [Expo Go App Store for iOS](https://apps.apple.com/ar/app/expo-go/id982107779)
+- [Expo Go Play Store for Android](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=es_AR)
 
-2. Start the app
+3. Start the app
 
    ```bash
     yarn run ios -c
+    yarn run android -c
    ```
+
+4. Open the Expo Go app
+- You should see the option to open the app there
 
 ## Decision log
 <table>
