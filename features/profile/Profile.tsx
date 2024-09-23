@@ -7,6 +7,7 @@ import { useThemeColor } from '@/design-system';
 import { DS } from '@/design-system';
 import { ProfileActions, ProfileMenu } from './components';
 import { Portfolio } from '../portfolio';
+import { PageLayout } from '@/shared';
 
 interface ProfileProps extends DrawerContentComponentProps {}
 
@@ -15,27 +16,29 @@ export const Profile = ({ navigation }: ProfileProps) => {
 
   return (
     // <DrawerContentScrollView {...props} style={{ flex: 1 }}>
-    <DS.PageLayout>
-      <DS.View style={styles.header}>
-        <DS.Text type="subtitle">My Wallet</DS.Text>
-        <DS.Button type="plain" onPress={() => navigation.closeDrawer()} background={false}>
-          <Ionicons name="chevron-forward" size={18} color={color} />
-        </DS.Button>
+    <PageLayout>
+      <DS.View flex={1}>
+        <DS.View style={styles.header}>
+          <DS.Text type="subtitle">My Wallet</DS.Text>
+          <DS.Button type="plain" onPress={() => navigation.closeDrawer()} background={false}>
+            <Ionicons name="chevron-forward" size={18} color={color} />
+          </DS.Button>
+        </DS.View>
+        <DS.View flex={0.5}>
+          <ProfileActions />
+        </DS.View>
+        <DS.View flex={3}>
+          <Portfolio />
+        </DS.View>
+        <DS.View flex={1} style={styles.menu}>
+          <ProfileMenu />
+        </DS.View>
+        {/* <DrawerItemList {...props} /> */}
+        {/* </DrawerContentScrollView> */}
+        <DS.Text>App Version: {Application.nativeApplicationVersion}</DS.Text>
+        <DS.Text>App Version: {Application.nativeBuildVersion}</DS.Text>
       </DS.View>
-      <DS.View>
-        <ProfileActions />
-      </DS.View>
-      <DS.View flex={2}>
-        <Portfolio />
-      </DS.View>
-      <DS.View flex={1} style={styles.menu}>
-        <ProfileMenu />
-      </DS.View>
-      {/* <DrawerItemList {...props} /> */}
-      {/* </DrawerContentScrollView> */}
-      <DS.Text>App Version: {Application.nativeApplicationVersion}</DS.Text>
-      <DS.Text>App Version: {Application.nativeBuildVersion}</DS.Text>
-    </DS.PageLayout>
+    </PageLayout>
   );
 };
 

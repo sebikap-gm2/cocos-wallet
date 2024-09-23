@@ -1,6 +1,6 @@
 import { DS } from '@/design-system';
 import { InstrumentItem, useSearchItems } from '@/features';
-import { ListEmptyComponent } from '@/shared';
+import { ListEmptyComponent, PageLayout } from '@/shared';
 import { useState } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
@@ -9,7 +9,7 @@ export default function Search() {
   const { data, isLoading } = useSearchItems(text);
 
   return (
-    <DS.PageLayout isLoading={isLoading} style={styles.container}>
+    <PageLayout isLoading={isLoading} style={styles.container}>
       <DS.Text type="title">Discover</DS.Text>
       <FlatList
         data={data}
@@ -17,7 +17,7 @@ export default function Search() {
         ListEmptyComponent={<ListEmptyComponent message={`No tickers found for ${text}`} />}
       />
       <DS.TextInput autoCorrect={false} value={text} onChangeText={setText} />
-    </DS.PageLayout>
+    </PageLayout>
   );
 }
 

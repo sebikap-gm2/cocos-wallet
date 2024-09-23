@@ -7,12 +7,7 @@ export const Portfolio = () => {
   const { portfolioItems } = usePortfolioItems();
   return (
     <>
-      <DS.View
-        style={{
-          width: '100%',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}>
+      <DS.View row>
         <DS.View flex={1}>
           <DS.Text bold center>
             Ticker

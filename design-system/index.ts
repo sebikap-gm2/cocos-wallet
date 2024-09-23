@@ -5,14 +5,12 @@ import { ThemedButton } from './ThemedButton';
 import { ThemedSwitch } from './ThemedSwitch';
 import { ThemedTextInput } from './ThemedTextInput';
 import { ThemedTabs } from './ThemedTabs';
-import { PageLayout } from './PageLayout';
 import { ThemedDropdown } from './ThemedDropdown';
 
 export const DS = {
   Colors,
   Button: ThemedButton,
   DropDown: ThemedDropdown,
-  PageLayout,
   Switch: ThemedSwitch,
   Tabs: ThemedTabs,
   Text: ThemedText,

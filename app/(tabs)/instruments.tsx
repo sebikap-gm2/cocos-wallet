@@ -1,12 +1,13 @@
 import { DS } from '@/design-system';
 import { InstrumentItem, useInstrumentItems } from '@/features';
+import { PageLayout } from '@/shared';
 import { FlatList, StyleSheet } from 'react-native';
 
 export default function Instruments() {
   const { instruments, isLoading } = useInstrumentItems();
 
   return (
-    <DS.PageLayout isLoading={isLoading} style={styles.container}>
+    <PageLayout isLoading={isLoading} style={styles.container}>
       <DS.Text type="title">Instruments</DS.Text>
       <FlatList
         data={instruments}
@@ -14,7 +15,7 @@ export default function Instruments() {
         contentContainerStyle={styles.listContainer}
         numColumns={2}
       />
-    </DS.PageLayout>
+    </PageLayout>
   );
 }
 
