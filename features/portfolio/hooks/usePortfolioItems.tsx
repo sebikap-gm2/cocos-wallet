@@ -1,11 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import { portfolioService } from '../../profile/services';
 import { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
-import { portfolioItemsAtom } from '../state';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { portfolioItemsAtom, portfolioItemsSelector } from '../state';
 
 export const usePortfolioItems = () => {
-  const [portfolioItems, setPortfolioItems] = useRecoilState(portfolioItemsAtom);
+  const setPortfolioItems = useSetRecoilState(portfolioItemsAtom);
+  const portfolioItems = useRecoilValue(portfolioItemsSelector);
+
   const { data, isError, isLoading } = useQuery({
     queryKey: ['portfolio'],
     queryFn: portfolioService.getPortfolio,
