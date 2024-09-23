@@ -1,7 +1,7 @@
 import { DS } from '@/design-system';
-import { Spinner } from '@/shared';
 import { PropsWithChildren } from 'react';
 import { SafeAreaView, ViewProps } from 'react-native';
+import { Spinner } from './Spinner';
 
 export const PageLayout: React.FC<PropsWithChildren & ViewProps & { isLoading?: boolean }> = ({
   children,
