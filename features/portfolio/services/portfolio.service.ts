@@ -1,5 +1,5 @@
-import { PortfolioItemsValidator, type TPortfolioItem } from '@/features';
 import { httpClient } from '@/shared';
+import { PortfolioItemsValidator, TPortfolioItem } from '../types';
 
 class PortfolioService {
   async getPortfolio() {
