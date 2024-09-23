@@ -1,6 +1,5 @@
 import { DS } from '@/design-system';
 import { usePortfolioItems } from '@/features';
-import { Spinner } from '@/shared';
 import { formatCurrency } from '@/utils';
 
 export default function HomeScreenComponent() {
