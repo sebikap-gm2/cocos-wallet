@@ -35,8 +35,9 @@ export const Profile = ({ navigation }: ProfileProps) => {
         </DS.View>
         {/* <DrawerItemList {...props} /> */}
         {/* </DrawerContentScrollView> */}
-        <DS.Text>App Version: {Application.nativeApplicationVersion}</DS.Text>
-        <DS.Text>App Version: {Application.nativeBuildVersion}</DS.Text>
+        <DS.Text>
+          App Version: {Application.nativeApplicationVersion}-{Application.nativeBuildVersion}
+        </DS.Text>
       </DS.View>
     </PageLayout>
   );
