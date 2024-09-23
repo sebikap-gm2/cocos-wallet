@@ -1,11 +1,11 @@
-import { Tabs } from "expo-router";
-import React from "react";
+import { Tabs } from 'expo-router';
+import React from 'react';
 
-import { useThemeColor } from "@/design-system";
-import { TabBarIcon } from "@/shared";
+import { useThemeColor } from '@/design-system';
+import { TabBarIcon } from '@/shared';
 
 export default function TabLayout() {
-  const tabBarActiveTintColor = useThemeColor("colors.text");
+  const tabBarActiveTintColor = useThemeColor('colors.text');
 
   return (
     <Tabs
@@ -13,22 +13,18 @@ export default function TabLayout() {
         tabBarActiveTintColor,
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: "transparent",
+          backgroundColor: 'transparent',
           borderTopWidth: 0, // Remove top border
           elevation: 0, // Remove shadow on Android
           shadowOpacity: 0, // Remove shadow on iOS
         },
-      }}
-    >
+      }}>
       <Tabs.Screen
         name="(drawer)"
         options={{
           tabBarLabel: () => null,
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "wallet" : "wallet-outline"}
-              color={color}
-            />
+            <TabBarIcon name={focused ? 'wallet' : 'wallet-outline'} color={color} />
           ),
         }}
       />
@@ -37,10 +33,7 @@ export default function TabLayout() {
         options={{
           tabBarLabel: () => null,
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "search" : "search-outline"}
-              color={color}
-            />
+            <TabBarIcon name={focused ? 'search' : 'search-outline'} color={color} />
           ),
         }}
       />
@@ -49,10 +42,7 @@ export default function TabLayout() {
         options={{
           tabBarLabel: () => null,
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "cash" : "cash-outline"}
-              color={color}
-            />
+            <TabBarIcon name={focused ? 'cash' : 'cash-outline'} color={color} />
           ),
         }}
       />

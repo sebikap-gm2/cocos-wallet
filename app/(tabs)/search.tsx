@@ -1,11 +1,11 @@
-import { DS } from "@/design-system";
-import { InstrumentItem, useSearchItems } from "@/features";
-import { ListEmptyComponent } from "@/shared";
-import { useState } from "react";
-import { FlatList, SafeAreaView, StyleSheet } from "react-native";
+import { DS } from '@/design-system';
+import { InstrumentItem, useSearchItems } from '@/features';
+import { ListEmptyComponent } from '@/shared';
+import { useState } from 'react';
+import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
 
 export default function Search() {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const { data, isLoading } = useSearchItems(text);
 
   if (isLoading) {
@@ -26,9 +26,7 @@ export default function Search() {
       <FlatList
         data={data}
         renderItem={({ item }) => <InstrumentItem item={item} />}
-        ListEmptyComponent={
-          <ListEmptyComponent message={`No tickers found for ${text}`} />
-        }
+        ListEmptyComponent={<ListEmptyComponent message={`No tickers found for ${text}`} />}
       />
       <DS.TextInput autoCorrect={false} value={text} onChangeText={setText} />
     </SafeAreaView>
@@ -41,7 +39,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   row: {
-    justifyContent: "center",
+    justifyContent: 'center',
   },
   listContainer: {
     paddingVertical: 10,

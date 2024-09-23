@@ -1,4 +1,4 @@
-import { StyleSheet, View, type ViewProps } from "react-native";
+import { StyleSheet, View, type ViewProps } from 'react-native';
 
 export type ThemedViewProps = ViewProps & {
   center?: boolean;
@@ -25,9 +25,9 @@ export function ThemedView({
         styles.container,
         full && styles.full,
         { flex, gap },
-        center && { alignItems: "center" },
-        row && { flexDirection: "row" },
-        spaceBetween && { justifyContent: "space-between" },
+        center && { alignItems: 'center' },
+        row && { flexDirection: 'row' },
+        spaceBetween && { justifyContent: 'space-between' },
         style,
       ]}
       {...otherProps}
@@ -38,9 +38,9 @@ export function ThemedView({
 const styles = StyleSheet.create({
   container: {},
   full: {
-    width: "100%",
+    width: '100%',
   },
   flex: {
-    justifyContent: "center",
+    justifyContent: 'center',
   },
 });

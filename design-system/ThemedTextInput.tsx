@@ -1,18 +1,11 @@
-import { useThemeColor } from "./hooks";
-import {
-  TextInput,
-  View,
-  StyleSheet,
-  TextInputProps,
-  ViewStyle,
-  TextStyle,
-} from "react-native";
+import { useThemeColor } from './hooks';
+import { TextInput, View, StyleSheet, TextInputProps, ViewStyle, TextStyle } from 'react-native';
 
-interface ThemedTextInputProps extends TextInputProps { }
+interface ThemedTextInputProps extends TextInputProps {}
 
 export const ThemedTextInput = (props: ThemedTextInputProps) => {
-  const color = useThemeColor("colors.text");
-  const placeholderTextColor = useThemeColor("colors.textLight");
+  const color = useThemeColor('colors.text');
+  const placeholderTextColor = useThemeColor('colors.textLight');
 
   return (
     <View style={[styles.container, { borderColor: placeholderTextColor }]}>
@@ -32,7 +25,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     paddingHorizontal: 12,
     paddingVertical: 8,
-    width: "100%",
+    width: '100%',
   } as ViewStyle,
   input: {
     fontSize: 16,

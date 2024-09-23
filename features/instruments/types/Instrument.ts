@@ -9,6 +9,6 @@ export interface TInstrument {
 }
 
 export enum InstrumentType {
-  ACCIONES = "ACCIONES",
-  MONEDA = "MONEDA",
+  ACCIONES = 'ACCIONES',
+  MONEDA = 'MONEDA',
 }

@@ -1,14 +1,10 @@
-import {
-  TouchableOpacity,
-  StyleSheet,
-  TouchableOpacityProps,
-} from "react-native";
+import { TouchableOpacity, StyleSheet, TouchableOpacityProps } from 'react-native';
 
-import { Ionicons } from "@expo/vector-icons";
-import { useThemeColor } from "./hooks";
-import { ThemedText } from "./ThemedText";
+import { Ionicons } from '@expo/vector-icons';
+import { useThemeColor } from './hooks';
+import { ThemedText } from './ThemedText';
 
-type ButtonType = "primary" | "secondary" | "plain";
+type ButtonType = 'primary' | 'secondary' | 'plain';
 
 export type ThemedButtonProps = TouchableOpacityProps & {
   onPress: () => void;
@@ -27,13 +23,13 @@ export function ThemedButton({
   icon,
   selected = false,
   text,
-  type = "primary",
+  type = 'primary',
   children,
   style,
   ...rest
 }: ThemedButtonProps) {
-  const color = useThemeColor("colors.primary");
-  const backgroundColor = useThemeColor("colors.textLight");
+  const color = useThemeColor('colors.primary');
+  const backgroundColor = useThemeColor('colors.textLight');
 
   return (
     <TouchableOpacity
@@ -43,24 +39,17 @@ export function ThemedButton({
         center && styles.center,
         icon ? styles.iconContainer : undefined,
         background && { backgroundColor },
-        type === "secondary" && {
+        type === 'secondary' && {
           backgroundColor: undefined,
           borderWidth: 1,
           borderColor: backgroundColor,
         },
-        type === "plain" && { backgroundColor: undefined },
+        type === 'plain' && { backgroundColor: undefined },
         style,
       ]}
-      {...rest}
-    >
+      {...rest}>
       {icon ? (
-        <Ionicons
-          size={28}
-          style={[{ marginBottom: 0 }]}
-          name={icon}
-          color={color}
-          {...rest}
-        />
+        <Ionicons size={28} style={[{ marginBottom: 0 }]} name={icon} color={color} {...rest} />
       ) : null}
       {text ? <ThemedText type="defaultSemiBold">{text}</ThemedText> : children}
     </TouchableOpacity>
@@ -74,17 +63,17 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   center: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   iconContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 10,
     margin: 2,
     padding: 10,
     borderRadius: 50,
   },
   text: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });

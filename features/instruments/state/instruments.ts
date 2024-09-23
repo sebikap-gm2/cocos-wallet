@@ -1,7 +1,7 @@
-import { atom } from "recoil";
-import { TInstrument } from "../types";
+import { atom } from 'recoil';
+import { TInstrument } from '../types';
 
 export const instrumentsAtom = atom<TInstrument[]>({
-  key: "instruments",
+  key: 'instruments',
   default: [],
 });

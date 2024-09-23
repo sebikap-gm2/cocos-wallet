@@ -1,7 +1,7 @@
-import { FlatList } from "react-native";
-import { DS } from "@/design-system";
-import { usePortfolioItems } from "../hooks";
-import { PortfolioItem } from "./PortfolioItem";
+import { FlatList } from 'react-native';
+import { DS } from '@/design-system';
+import { usePortfolioItems } from '../hooks';
+import { PortfolioItem } from './PortfolioItem';
 
 export const Portfolio = () => {
   const { data } = usePortfolioItems();
@@ -9,11 +9,10 @@ export const Portfolio = () => {
     <>
       <DS.View
         style={{
-          width: "100%",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
+          width: '100%',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}>
         <DS.View flex={1}>
           <DS.Text bold center>
             Ticker
@@ -42,9 +41,7 @@ export const Portfolio = () => {
       </DS.View>
       <FlatList
         data={data}
-        renderItem={({ item, index }) => (
-          <PortfolioItem item={item} bg={index % 2 === 0} />
-        )}
+        renderItem={({ item, index }) => <PortfolioItem item={item} bg={index % 2 === 0} />}
         style={{ flex: 1 }}
       />
     </>

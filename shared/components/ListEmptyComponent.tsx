@@ -1,4 +1,4 @@
-import { DS } from "@/design-system";
+import { DS } from '@/design-system';
 
 interface ListEmptyComponentProps {
   message: string;

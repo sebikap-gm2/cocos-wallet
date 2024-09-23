@@ -1,5 +1,5 @@
-import { PropsWithChildren } from "react";
-import { SafeAreaView, ViewProps } from "react-native";
+import { PropsWithChildren } from 'react';
+import { SafeAreaView, ViewProps } from 'react-native';
 
 export const PageLayout: React.FC<PropsWithChildren & ViewProps> = ({
   children,

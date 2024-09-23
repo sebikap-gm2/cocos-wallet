@@ -17,25 +17,25 @@ interface FormatCurrencyConfig {
  */
 export function formatCurrency({
   value,
-  locale = "en-US",
-  currency = "USD",
+  locale = 'en-US',
+  currency = 'USD',
   shorten = false,
 }: FormatCurrencyConfig): string {
-  const numericValue = typeof value === "string" ? parseFloat(value) : value;
+  const numericValue = typeof value === 'string' ? parseFloat(value) : value;
 
   if (isNaN(numericValue)) {
-    throw new Error("Invalid value provided for currency formatting");
+    throw new Error('Invalid value provided for currency formatting');
   }
 
   const shortenNumber = (num: number) => {
-    if (num >= 1e9) return [(num / 1e9).toFixed(0), "B"];
-    if (num >= 1e6) return [(num / 1e6).toFixed(0), "M"];
-    if (num >= 1e3) return [(num / 1e3).toFixed(0), "K"];
+    if (num >= 1e9) return [(num / 1e9).toFixed(0), 'B'];
+    if (num >= 1e6) return [(num / 1e6).toFixed(0), 'M'];
+    if (num >= 1e3) return [(num / 1e3).toFixed(0), 'K'];
     return [num.toFixed(1)];
   };
 
   const formatter = new Intl.NumberFormat(locale, {
-    style: "currency",
+    style: 'currency',
     currency: currency,
     maximumFractionDigits: shorten ? 0 : 2,
   });

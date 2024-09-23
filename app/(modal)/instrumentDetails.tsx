@@ -1,12 +1,12 @@
-import { DS } from "@/design-system";
-import { InstrumentType } from "@/features";
-import { InstrumentDetailsRow } from "@/features/instruments/components/InstrumentDetailsRow";
-import { instrumentSelector } from "@/features/instruments/state/instrument";
-import { formatCurrency } from "@/utils";
-import { Ionicons } from "@expo/vector-icons";
-import { useRoute } from "@react-navigation/native";
-import { useRecoilValue } from "recoil";
-import { z } from "zod";
+import { DS } from '@/design-system';
+import { InstrumentType } from '@/features';
+import { InstrumentDetailsRow } from '@/features/instruments/components/InstrumentDetailsRow';
+import { instrumentSelector } from '@/features/instruments/state/instrument';
+import { formatCurrency } from '@/utils';
+import { Ionicons } from '@expo/vector-icons';
+import { useRoute } from '@react-navigation/native';
+import { useRecoilValue } from 'recoil';
+import { z } from 'zod';
 
 const InstrumentDetailsParamsValidator = z.object({
   params: z.object({
@@ -21,10 +21,7 @@ export default function InstrumentDetails() {
 
   if (!instrument) return null;
 
-  const icon =
-    instrument.type === InstrumentType.ACCIONES
-      ? "stats-chart-outline"
-      : "cash-outline";
+  const icon = instrument.type === InstrumentType.ACCIONES ? 'stats-chart-outline' : 'cash-outline';
 
   return (
     <DS.View flex={1} full gap={20} style={{ padding: 20 }}>
@@ -41,10 +38,7 @@ export default function InstrumentDetails() {
         title="Close Price"
         value={formatCurrency({ value: instrument.close_price, shorten: true })}
       />
-      <InstrumentDetailsRow
-        title="Return %"
-        value={`${instrument.returnPercentage}%`}
-      />
+      <InstrumentDetailsRow title="Return %" value={`${instrument.returnPercentage}%`} />
     </DS.View>
   );
 }

@@ -1,4 +1,4 @@
-import { DS } from "@/design-system";
+import { DS } from '@/design-system';
 import {
   TOrder,
   ORDER_SIDES,
@@ -7,11 +7,11 @@ import {
   ordersService,
   Order,
   usePortfolioItems,
-} from "@/features";
-import { useRoute } from "@react-navigation/native";
-import { Controller, useForm } from "react-hook-form";
-import { StyleSheet } from "react-native";
-import { z } from "zod";
+} from '@/features';
+import { useRoute } from '@react-navigation/native';
+import { Controller, useForm } from 'react-hook-form';
+import { StyleSheet } from 'react-native';
+import { z } from 'zod';
 
 const modalParamsValidator = z.object({
   params: z.object({
@@ -32,11 +32,11 @@ export default function TransactionModal() {
   } = useForm<TOrder>({
     defaultValues: {
       instrument_id: params.instrumentId,
-      side: "BUY",
-      type: "MARKET",
+      side: 'BUY',
+      type: 'MARKET',
     },
   });
-  const watchType = watch("type");
+  const watchType = watch('type');
 
   if (!params) return null;
   if (!params.instrumentId) return null;
@@ -83,7 +83,7 @@ export default function TransactionModal() {
         name="side"
         control={control}
         defaultValue="BUY"
-        rules={{ required: "You must select a side" }}
+        rules={{ required: 'You must select a side' }}
         render={({ field: { onChange, onBlur, value } }) => (
           <DS.View full>
             <DS.Tabs
@@ -99,7 +99,7 @@ export default function TransactionModal() {
         name="type"
         control={control}
         defaultValue="MARKET"
-        rules={{ required: "You must select a type" }}
+        rules={{ required: 'You must select a type' }}
         render={({ field: { onChange, onBlur, value } }) => (
           <DS.View full>
             <DS.Tabs
@@ -127,10 +127,8 @@ export default function TransactionModal() {
           />
         )}
       />
-      {errors.quantity && (
-        <DS.Text type="error">{errors.quantity.message}</DS.Text>
-      )}
-      {watchType === "LIMIT" ? (
+      {errors.quantity && <DS.Text type="error">{errors.quantity.message}</DS.Text>}
+      {watchType === 'LIMIT' ? (
         <>
           <Controller
             name="price"
@@ -145,9 +143,7 @@ export default function TransactionModal() {
               />
             )}
           />
-          {errors.price && (
-            <DS.Text type="error">{errors.price.message}</DS.Text>
-          )}
+          {errors.price && <DS.Text type="error">{errors.price.message}</DS.Text>}
         </>
       ) : null}
       <DS.Button text="Submit" onPress={handleSubmit(onSubmit)} />
@@ -158,9 +154,9 @@ export default function TransactionModal() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: 'center',
     gap: 15,
-    padding: "5%",
-    paddingTop: "10%",
+    padding: '5%',
+    paddingTop: '10%',
   },
 });

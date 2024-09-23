@@ -1,4 +1,4 @@
-import { DS } from "@/design-system";
+import { DS } from '@/design-system';
 
 export default function SettingsModal() {
   return (

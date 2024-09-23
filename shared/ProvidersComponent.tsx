@@ -1,9 +1,5 @@
-import { PropsWithChildren } from "react";
-import {
-  CustomThemeProvider,
-  ReactQueryProvider,
-  RecoilProvider,
-} from "./providers";
+import { PropsWithChildren } from 'react';
+import { CustomThemeProvider, ReactQueryProvider, RecoilProvider } from './providers';
 
 const ProvidersList = [RecoilProvider, ReactQueryProvider, CustomThemeProvider];
 

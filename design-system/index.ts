@@ -1,12 +1,12 @@
-import { Colors } from "./constants";
-import { ThemedText } from "./ThemedText";
-import { ThemedView } from "./ThemedView";
-import { ThemedButton } from "./ThemedButton";
-import { ThemedSwitch } from "./ThemedSwitch";
-import { ThemedTextInput } from "./ThemedTextInput";
-import { ThemedTabs } from "./ThemedTabs";
-import { PageLayout } from "./PageLayout";
-import { ThemedDropdown } from "./ThemedDropdown";
+import { Colors } from './constants';
+import { ThemedText } from './ThemedText';
+import { ThemedView } from './ThemedView';
+import { ThemedButton } from './ThemedButton';
+import { ThemedSwitch } from './ThemedSwitch';
+import { ThemedTextInput } from './ThemedTextInput';
+import { ThemedTabs } from './ThemedTabs';
+import { PageLayout } from './PageLayout';
+import { ThemedDropdown } from './ThemedDropdown';
 
 export const DS = {
   Colors,
@@ -20,7 +20,7 @@ export const DS = {
   View: ThemedView,
 } as const;
 
-export * from "./hooks";
+export * from './hooks';
 
 // typography: Typography,
 // palette: Palette,

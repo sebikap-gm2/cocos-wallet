@@ -1,9 +1,9 @@
-import { TInstrument } from "@/features";
-import { httpClient } from "@/shared";
+import { TInstrument } from '@/features';
+import { httpClient } from '@/shared';
 
 class SearchService {
   getInstrumentsByTicker(searchText: string) {
-    return httpClient.get<TInstrument[]>("/search", { query: searchText });
+    return httpClient.get<TInstrument[]>('/search', { query: searchText });
   }
 }
 
