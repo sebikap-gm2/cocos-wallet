@@ -4,7 +4,7 @@ import { usePortfolioItems } from '../hooks';
 import { PortfolioItem } from './PortfolioItem';
 
 export const Portfolio = () => {
-  const { data } = usePortfolioItems();
+  const { portfolioItems } = usePortfolioItems();
   return (
     <>
       <DS.View
@@ -40,7 +40,7 @@ export const Portfolio = () => {
         </DS.View>
       </DS.View>
       <FlatList
-        data={data}
+        data={portfolioItems}
         renderItem={({ item, index }) => <PortfolioItem item={item} bg={index % 2 === 0} />}
         style={{ flex: 1 }}
       />

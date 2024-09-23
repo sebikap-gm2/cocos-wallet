@@ -1,7 +1,5 @@
 import { DS } from '@/design-system';
-import { InstrumentType } from '@/features';
-import { InstrumentDetailsRow } from '@/features/instruments/components/InstrumentDetailsRow';
-import { instrumentSelector } from '@/features/instruments/state/instrument';
+import { InstrumentDetailsRow, instrumentSelector, InstrumentType } from '@/features';
 import { formatCurrency } from '@/utils';
 import { Ionicons } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/native';

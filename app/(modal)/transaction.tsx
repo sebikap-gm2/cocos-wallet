@@ -22,7 +22,7 @@ const modalParamsValidator = z.object({
 
 export default function TransactionModal() {
   const route = useRoute();
-  const { data } = usePortfolioItems();
+  const { portfolioItems } = usePortfolioItems();
   const { params } = modalParamsValidator.parse(route);
   const {
     control,
@@ -40,9 +40,9 @@ export default function TransactionModal() {
 
   if (!params) return null;
   if (!params.instrumentId) return null;
-  if (!data) return null;
+  if (!portfolioItems) return null;
 
-  const mappedOptions = data.map((o) => ({
+  const mappedOptions = portfolioItems.map((o) => ({
     ...o,
     id: o.instrument_id,
     title: o.ticker,
