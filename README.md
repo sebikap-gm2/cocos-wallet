@@ -61,9 +61,9 @@
   </tr>
   <tr>
     <td>Design</td>
-    <td>Binance, Robinhood</td>
-    <td>Coinbase app</td>
-    <td>Coinbase was the selected decision as it provided a plain UI, with a bit of navigaton play, that was able to display expo router at work. |</td>
+    <td>Binance, Coinbase</td>
+    <td>Robinhood app</td>
+    <td>Robinhood was the selected decision as it provided a plain UI, with a bit of navigaton play, that was able to display expo router at work. |</td>
   </tr>
   <tr>
     <td>Global state management </td>
