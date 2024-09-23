@@ -11,6 +11,7 @@ export type ThemedButtonProps = TouchableOpacityProps & {
   background?: boolean;
   center?: boolean;
   icon?: string;
+  iconVertical?: boolean;
   selected?: boolean;
   text?: string;
   type?: ButtonType;
@@ -21,7 +22,8 @@ export function ThemedButton({
   background = true,
   center = true,
   icon,
-  selected = false,
+  iconVertical,
+  selected,
   text,
   type = 'primary',
   children,
@@ -38,6 +40,7 @@ export function ThemedButton({
         styles.container,
         center && styles.center,
         icon ? styles.iconContainer : undefined,
+        iconVertical ? { flexDirection: 'column', borderRadius: 15 } : undefined,
         background && { backgroundColor },
         type === 'secondary' && {
           backgroundColor: undefined,
