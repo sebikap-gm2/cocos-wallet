@@ -17,8 +17,8 @@ interface FormatCurrencyConfig {
  */
 export function formatCurrency({
   value,
-  locale = 'en-US',
-  currency = 'USD',
+  locale = 'es-AR',
+  currency = 'ARS',
   shorten = false,
 }: FormatCurrencyConfig): string {
   const numericValue = typeof value === 'string' ? parseFloat(value) : value;
