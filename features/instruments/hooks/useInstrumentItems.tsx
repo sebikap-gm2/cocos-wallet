@@ -10,7 +10,7 @@ export const useInstrumentItems = () => {
 
   const { data, isError, isLoading } = useQuery({
     queryKey: ['instruments'],
-    queryFn: instrumentsService.getInstruments,
+    queryFn: async () => instrumentsService.getInstruments(),
   });
 
   useEffect(() => {

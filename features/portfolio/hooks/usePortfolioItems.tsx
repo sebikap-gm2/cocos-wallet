@@ -10,7 +10,7 @@ export const usePortfolioItems = () => {
 
   const { data, isError, isLoading } = useQuery({
     queryKey: ['portfolio'],
-    queryFn: portfolioService.getPortfolio,
+    queryFn: async () => await portfolioService.getPortfolio(),
   });
 
   useEffect(() => {
