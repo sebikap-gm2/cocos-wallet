@@ -4,6 +4,10 @@ import { OrderResponseValidator, TOrder } from '../types';
 class OrdersService {
   async sendOrder(data: TOrder) {
     const response = await httpClient.post('/orders', data);
+    return this.handleResponse(response);
+  }
+
+  private async handleResponse<T>(response: T) {
     // Here will fail if api does not match expected structure. For more detailed error management,
     // safe parsing could be implemented and error handling specified at the service level.
     const validatedResponse = OrderResponseValidator.parse(response);
