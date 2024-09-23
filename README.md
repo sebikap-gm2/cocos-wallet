@@ -27,7 +27,7 @@
     <td>Stack</td>
     <td>RN, Flutter, Ionic, Native apps</td>
     <td>Expo</td>
-    <td>Expo is a framework that uses RN under the hood. Expo manages the native part of RN. It also provides an extensive toolkit that helps solve many typical requirements, such as navigation, camera, location, and more. It also provides the ability to The counterpart is that since it's built over RN, it does not provide all the functionality RN provides, but it is more than enough for most use cases.</td>
+    <td>Expo is a framework that uses RN under the hood. Expo manages the native part of RN. It also provides an extensive toolkit that helps solve many typical requirements, such as navigation, camera, location, and more. The dev tooling is great, and makes the experience much smoother. The counterpart is that since it's built over RN, it does not provide all the functionality RN provides, but it is more than enough for most use cases.</td>
   </tr>
   <tr>
     <td>Project Structure</td>
@@ -67,9 +67,9 @@
   </tr>
   <tr>
     <td>Global state management </td>
-    <td>Redux, Contex, Jotai, Zustand, Recoil</td>
-    <td>MOBX</td>
-    <td></td>
+    <td>Redux, Context, Jotai, Zustand, Mobx, React query</td>
+    <td>Recoil</td>
+    <td>At the end of the day, it comes down to the dx of preference. Jotai and Zustand are great for small apps, Redux (using redux toolkit) scales better for large apps. Mobx has a great interface, but it collides a bit with the use of the runtime and typecheck validator, Zod. React query as a state management tool is great for server side, but in this case, global state is client side. Therefore, I chose going with Recoil, that provides a small but scalable approach of building the global state elements.</td>
   </tr>
   <tr>
     <td>Select component</td>
