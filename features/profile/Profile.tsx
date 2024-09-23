@@ -24,7 +24,7 @@ export const Profile = ({ navigation }: ProfileProps) => {
             <Ionicons name="chevron-forward" size={18} color={color} />
           </DS.Button>
         </DS.View>
-        <DS.View flex={0.5}>
+        <DS.View flex={1}>
           <ProfileActions />
         </DS.View>
         <DS.View flex={3}>
@@ -45,7 +45,6 @@ export const Profile = ({ navigation }: ProfileProps) => {
 
 const styles = StyleSheet.create({
   header: {
-    paddingBottom: 20,
     paddingLeft: 20,
     flexDirection: 'row',
     alignItems: 'center',
