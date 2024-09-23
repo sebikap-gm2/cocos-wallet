@@ -7,7 +7,7 @@ export default function ModalLayout() {
         headerShown: false,
         presentation: 'modal',
       }}>
-      <Stack.Screen name="instrumentDetails" />
+      <Stack.Screen name="portfolioItemDetails" />
       <Stack.Screen name="settings" />
       <Stack.Screen name="transaction" />
     </Stack>
