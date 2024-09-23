@@ -28,10 +28,12 @@ export const InstrumentItem = ({ item }: InstrumentItemProps) => {
         <DS.Text type="subtitle">{item.ticker}</DS.Text>
         <DS.Text type="defaultSemiBold">{item.name}</DS.Text>
         <DS.Text>{formatCurrency({ value: item.last_price, shorten: true })}</DS.Text>
-        <DS.View row center spaceBetween>
-          <DS.Text>{item.returnPercentage}%</DS.Text>
-          <Ionicons name={icon} size={18} color="white" />
-        </DS.View>
+        {item.returnPercentage ? (
+          <DS.View row center spaceBetween>
+            <DS.Text>{item.returnPercentage}%</DS.Text>
+            <Ionicons name={icon} size={18} color="white" />
+          </DS.View>
+        ) : null}
       </DS.View>
     </DS.Button>
   );
