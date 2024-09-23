@@ -1,5 +1,5 @@
 import { DS } from '@/design-system';
-import { InstrumentDetailsRow, instrumentSelector } from '@/features';
+import { InstrumentDetailsRow, instrumentItemSelector } from '@/features';
 import { formatCurrency } from '@/utils';
 import { Ionicons } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/native';
@@ -15,7 +15,7 @@ const InstrumentDetailsParamsValidator = z.object({
 export default function InstrumentDetails() {
   const route = useRoute();
   const { params } = InstrumentDetailsParamsValidator.parse(route);
-  const instrument = useRecoilValue(instrumentSelector(params.instrumentId));
+  const instrument = useRecoilValue(instrumentItemSelector(params.instrumentId));
 
   if (!instrument) return null;
 
