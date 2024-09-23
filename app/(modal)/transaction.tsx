@@ -108,9 +108,9 @@ export default function TransactionModal() {
       <Controller
         name="quantity"
         control={control}
-        // rules={{
-        //   required: true,
-        // }}
+        rules={{
+          required: 'Quantity is required',
+        }}
         render={({ field: { onChange, onBlur, value } }) => (
           <DS.TextInput
             inputMode="numeric"
@@ -127,6 +127,9 @@ export default function TransactionModal() {
           <Controller
             name="price"
             control={control}
+            rules={{
+              required: { value: watchType === 'LIMIT', message: 'Price is required' },
+            }}
             render={({ field: { onChange, onBlur, value } }) => (
               <DS.TextInput
                 inputMode="numeric"
@@ -142,13 +145,6 @@ export default function TransactionModal() {
       ) : null}
       <DS.Button text="Submit" onPress={handleSubmit(onSubmit)} />
       <OrderResponse orderMutation={orderMutation} />
-      {/* {orderMutation.isPending ? <Spinner /> : null}
-      {orderResponse ? (
-        <>
-          <DS.Text>Order ID: {orderResponse.id}</DS.Text>
-          <DS.Text>Status: {orderResponse.status}</DS.Text>
-        </>
-      ) : null} */}
     </DS.View>
   );
 }
