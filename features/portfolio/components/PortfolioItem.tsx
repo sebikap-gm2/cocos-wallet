@@ -3,6 +3,7 @@ import { DS } from '@/design-system';
 import { useThemeColor } from '@/design-system';
 import { type TPortfolioItem } from '../types';
 import { formatCurrency } from '@/utils';
+import { useRouter } from 'expo-router';
 
 interface PortfolioItemProps {
   item: TPortfolioItem;
@@ -11,9 +12,20 @@ interface PortfolioItemProps {
 
 export const PortfolioItem = ({ item, bg }: PortfolioItemProps) => {
   const backgroundColor = useThemeColor('colors.card');
+  const router = useRouter();
+
+  const handlePortfolioItemClick = () =>
+    router.navigate({
+      pathname: '/(modal)/portfolioItemDetails',
+      params: {
+        instrumentId: item.instrument_id,
+      },
+    });
 
   return (
-    <DS.Button style={[styles.container, bg && { backgroundColor }]} onPress={() => null}>
+    <DS.Button
+      style={[styles.container, bg && { backgroundColor }]}
+      onPress={handlePortfolioItemClick}>
       <DS.View flex={1}>
         <DS.Text center>{item.ticker}</DS.Text>
       </DS.View>
